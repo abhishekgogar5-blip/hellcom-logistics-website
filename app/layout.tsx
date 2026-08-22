@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
          <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
   <img
     src="/hellcom-logo.png"
-    alt="HELLCOM Logistics logo"
+    alt="HELLCOM Logistics"
     className="brand-logo"
   />
 </Link>
