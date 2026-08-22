@@ -14,13 +14,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header">
           <div className="container nav-wrap">
-            <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
-              <span className="brand-mark">H</span>
-              <span className="brand-copy">
-                <strong>HELLCOM</strong>
-                <small>LOGISTICS</small>
-              </span>
-            </Link>
+         <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
+  <img
+    src="/hellcom-logo.png"
+    alt="HELLCOM Logistics"
+    className="brand-logo"
+  />
+</Link>
 
             <nav className="desktop-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
