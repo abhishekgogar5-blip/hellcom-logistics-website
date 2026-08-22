@@ -34,12 +34,18 @@ img { max-width: 100%; display: block; }
 }
 .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { display:flex; align-items:center; gap:12px; min-width:210px; }
+.brand-logo {
+  width: 210px;
+  height: auto;
+  display: block;
+}
 .brand-mark {
   width: 42px; height:42px; border-radius: 12px; display:grid; place-items:center;
   background: linear-gradient(135deg, var(--navy), #1c3d79);
   color: var(--white); font-weight: 900; font-size: 22px; position: relative;
   box-shadow: 0 8px 20px rgba(11,29,64,.16);
 }
+
 .brand-mark::after {
   content:""; position:absolute; width:24px; height:5px; background:var(--orange);
   right:-7px; top:19px; transform:rotate(-24deg); border-radius:10px;
