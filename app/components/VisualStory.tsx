@@ -1,13 +1,153 @@
 "use client";
-import { useEffect, useState } from "react";
-const slides=[
-{image:"/visuals/hellcom-1.webp",eyebrow:"01 — WAREHOUSE",title:"From loading bay to destination.",text:"Coordinated movement starts with disciplined handling, clear ownership and a reliable handoff."},
-{image:"/visuals/hellcom-2.webp",eyebrow:"02 — DISTRIBUTION",title:"Built to keep cargo moving.",text:"From containers to cross-dock operations, HELLCOM keeps every movement connected to the next step."},
-{image:"/visuals/hellcom-3.webp",eyebrow:"03 — SURFACE TRANSPORT",title:"One route. Many touchpoints. One accountable team.",text:"Road transportation designed around visibility, coordination and dependable execution."},
-{image:"/visuals/hellcom-4.webp",eyebrow:"04 — AIR FREIGHT",title:"When speed matters, move with confidence.",text:"Time-sensitive freight supported by the same principle behind every HELLCOM movement: Move With Trust."}
+
+import { useEffect, useRef, useState } from "react";
+
+const slides = [
+  {
+    image: "/visuals/hellcom-1.webp",
+    eyebrow: "01 — WAREHOUSE",
+    title: "Every movement starts with control.",
+    text: "Disciplined loading, clear ownership and reliable handoffs keep your cargo moving from the first touchpoint.",
+  },
+  {
+    image: "/visuals/hellcom-2.webp",
+    eyebrow: "02 — DISTRIBUTION",
+    title: "Connected operations. Fewer delays.",
+    text: "From containers and hubs to distribution points, HELLCOM keeps every movement connected to the next step.",
+  },
+  {
+    image: "/visuals/hellcom-3.webp",
+    eyebrow: "03 — SURFACE TRANSPORT",
+    title: "One route. One accountable team.",
+    text: "Road transportation designed around visibility, coordination and dependable execution across every touchpoint.",
+  },
+  {
+    image: "/visuals/hellcom-4.webp",
+    eyebrow: "04 — AIR FREIGHT",
+    title: "When speed matters, move with confidence.",
+    text: "Time-sensitive freight supported by the same principle behind every HELLCOM movement: Move With Trust.",
+  },
 ];
-export default function VisualStory(){
- const [active,setActive]=useState(0);
- useEffect(()=>{const nodes=Array.from(document.querySelectorAll<HTMLElement>("[data-story-slide]"));const observer=new IntersectionObserver(entries=>{const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(v)setActive(Number((v.target as HTMLElement).dataset.storySlide));},{threshold:[.25,.5,.75],rootMargin:"-10% 0px -10% 0px"});nodes.forEach(n=>observer.observe(n));return()=>observer.disconnect()},[]);
- return <section className="visual-story" aria-label="HELLCOM logistics visual story"><div className="visual-story-media" aria-hidden="true">{slides.map((s,i)=><img key={s.image} src={s.image} alt="" className={i===active?"visual-story-image is-active":"visual-story-image"}/>)}<div className="visual-story-shade"/></div><div className="visual-story-track">{slides.map((s,i)=><article className="visual-story-slide" data-story-slide={i} key={s.title}><div className="visual-story-copy"><div className="visual-story-eyebrow">{s.eyebrow}</div><h2>{s.title}</h2><p>{s.text}</p><div className="visual-story-progress">0{i+1} <span>/</span> 04</div></div></article>)}</div></section>
+
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+
+export default function VisualStory() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateProgress = () => {
+      frame = 0;
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const headerOffset = window.innerWidth <= 640 ? 68 : 76;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const stickyHeight = window.innerHeight - headerOffset;
+      const scrollDistance = Math.max(1, section.offsetHeight - stickyHeight);
+      const raw = (window.scrollY - (sectionTop - headerOffset)) / scrollDistance;
+
+      setProgress(clamp(raw, 0, 1));
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const scenePosition = progress * (slides.length - 1);
+  const activeScene = Math.min(
+    slides.length - 1,
+    Math.round(scenePosition),
+  );
+
+  return (
+    <section
+      ref={sectionRef}
+      className="visual-story"
+      aria-label="HELLCOM logistics visual story"
+    >
+      <div className="visual-story-stage">
+        <div className="visual-story-media" aria-hidden="true">
+          {slides.map((slide, index) => {
+            const distance = Math.abs(scenePosition - index);
+            const opacity = clamp(1 - distance * 1.55, 0, 1);
+            const scale = 1.08 - Math.min(distance, 1) * 0.045;
+            const translateX = (index - scenePosition) * 2.5;
+
+            return (
+              <img
+                key={slide.image}
+                src={slide.image}
+                alt=""
+                className="visual-story-image"
+                style={{
+                  opacity,
+                  transform: `scale(${scale}) translate3d(${translateX}%, 0, 0)`,
+                }}
+              />
+            );
+          })}
+          <div className="visual-story-shade" />
+        </div>
+
+        <div className="visual-story-content">
+          {slides.map((slide, index) => {
+            const distance = Math.abs(scenePosition - index);
+            const opacity = clamp(1 - distance * 2.2, 0, 1);
+            const translateY = (index - scenePosition) * 70;
+
+            return (
+              <article
+                className="visual-story-copy"
+                key={slide.title}
+                aria-hidden={activeScene !== index}
+                style={{
+                  opacity,
+                  transform: `translate3d(0, ${translateY}px, 0)`,
+                  pointerEvents: activeScene === index ? "auto" : "none",
+                }}
+              >
+                <div className="visual-story-eyebrow">{slide.eyebrow}</div>
+                <h2>{slide.title}</h2>
+                <p>{slide.text}</p>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="visual-story-ui" aria-hidden="true">
+          <div className="visual-story-counter">
+            <strong>{String(activeScene + 1).padStart(2, "0")}</strong>
+            <span>/ {String(slides.length).padStart(2, "0")}</span>
+          </div>
+          <div className="visual-story-dots">
+            {slides.map((_, index) => (
+              <span
+                key={index}
+                className={index === activeScene ? "is-active" : ""}
+              />
+            ))}
+          </div>
+          <div className="visual-story-scroll">
+            <span>Scroll to explore</span>
+            <i />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
