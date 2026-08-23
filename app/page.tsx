@@ -22,25 +22,60 @@ export default function Home() {
   return (
     <>
       <section className="hero">
+        <div className="hero-glow hero-glow-one" />
+        <div className="hero-glow hero-glow-two" />
+
         <div className="container hero-grid">
-          <div>
+          <div className="hero-copy">
             <div className="eyebrow">B2B Logistics • Transportation • Distribution</div>
             <h1>Move your business.<br /><span>Move With Trust.</span></h1>
             <p>
               Reliable logistics solutions built around responsive coordination, transparent communication and accountable delivery.
             </p>
+
             <div className="hero-actions">
               <Link href="/quote" className="btn btn-primary">Get a Quote</Link>
               <Link href="/services" className="btn btn-secondary">Explore Services</Link>
             </div>
+
+            <div className="hero-proof">
+              <div><strong>FTL</strong><span>Dedicated movement</span></div>
+              <div><strong>PTL</strong><span>Flexible freight</span></div>
+              <div><strong>POD</strong><span>Delivery closure</span></div>
+            </div>
           </div>
 
-          <div className="hero-art" aria-label="HELLCOM logistics route illustration">
-            <div className="route-line" />
-            <div className="route-dot a" />
-            <div className="route-dot b" />
-            <div className="route-truck" />
+          <div className="hero-visual" aria-label="HELLCOM logistics transportation visual">
+            <div className="hero-image-frame">
+              <img src="/visuals/hellcom-1.webp" alt="HELLCOM logistics freight loading operation" />
+              <div className="hero-image-shade" />
+              <div className="hero-route route-one" />
+              <div className="hero-route route-two" />
+
+              <div className="hero-floating-card hero-card-top">
+                <span className="live-dot" />
+                <div><strong>Shipment in motion</strong><small>Coordinated from pickup to delivery</small></div>
+              </div>
+
+              <div className="hero-floating-card hero-card-bottom">
+                <span className="mini-icon">↗</span>
+                <div><strong>Move With Trust.</strong><small>One accountable point of contact</small></div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div className="container hero-scroll-cue">
+          <span className="scroll-line" />
+          <span>Scroll to explore HELLCOM</span>
+        </div>
+      </section>
+
+      <section className="section hero-trust-strip">
+        <div className="container trust-grid">
+          <div><span className="trust-number">01</span><div><strong>Reliable Execution</strong><p>Focused coordination from pickup to delivery.</p></div></div>
+          <div><span className="trust-number">02</span><div><strong>Transparent Communication</strong><p>Clear updates and proactive shipment visibility.</p></div></div>
+          <div><span className="trust-number">03</span><div><strong>Single Point of Contact</strong><p>One accountable team coordinating your movement.</p></div></div>
         </div>
       </section>
 
