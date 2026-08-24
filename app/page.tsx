@@ -24,14 +24,6 @@ export default function Home() {
     <>
       <HeroScrollStory />
 
-      <section className="section hero-trust-strip">
-        <div className="container trust-grid">
-          <div><span className="trust-number">01</span><div><strong>Reliable Execution</strong><p>Focused coordination from pickup to delivery.</p></div></div>
-          <div><span className="trust-number">02</span><div><strong>Transparent Communication</strong><p>Clear updates and proactive shipment visibility.</p></div></div>
-          <div><span className="trust-number">03</span><div><strong>Single Point of Contact</strong><p>One accountable team coordinating your movement.</p></div></div>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container">
           <div className="section-head">
