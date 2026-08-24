@@ -29,33 +29,36 @@ export default function Home() {
           <div className="mission-vision-heading">
             <div>
               <div className="kicker">Why HELLCOM</div>
-              <h2>Built to move your business<br /><span>with confidence.</span></h2>
+              <h2>Logistics built around<br /><span>clarity and trust.</span></h2>
             </div>
             <p>
-              Logistics should feel simple on your side. One accountable partner,
-              clear communication and dependable execution from the first mile to the last.
+              We are building HELLCOM around a simple principle: when you hand us a shipment,
+              you should know exactly who is responsible for it.
             </p>
           </div>
 
           <div className="mission-vision-grid">
-            <article className="mission-vision-card mission-card">
-              <div className="mv-topline"><span className="mv-number">01</span><span className="mv-label">OUR MISSION</span></div>
-              <div className="mv-mark">→</div>
-              <h3>Make logistics<br /><em>simpler.</em></h3>
+            <article className="mission-vision-card">
+              <div className="mv-number">01</div>
+              <div className="mv-label">OUR MISSION</div>
+              <h3>Make logistics simpler.</h3>
               <p>
-                To make logistics simpler, more reliable, and more transparent. We connect every stage of the supply chain through dependable execution, clear communication, and technology-driven logistics solutions — helping businesses move their goods with confidence.
+                To make logistics simpler, more reliable, and more transparent.
+                We connect every stage of the supply chain through dependable execution,
+                clear communication, and technology-driven logistics solutions helping
+                businesses move their goods with confidence.
               </p>
-              <div className="mv-footer">SIMPLER · RELIABLE · TRANSPARENT</div>
             </article>
 
-            <article className="mission-vision-card vision-card">
-              <div className="mv-topline"><span className="mv-number">02</span><span className="mv-label">OUR VISION</span></div>
-              <div className="mv-mark">↗</div>
-              <h3>Keep business<br /><em>moving everywhere.</em></h3>
+            <article className="mission-vision-card">
+              <div className="mv-number">02</div>
+              <div className="mv-label">OUR VISION</div>
+              <h3>Keep businesses moving everywhere.</h3>
               <p>
-                To be a trusted logistics partner that keeps businesses moving everywhere. We aim to build a connected, technology-enabled logistics network that delivers smarter solutions, stronger visibility, and consistent service across every journey.
+                To be a trusted logistics partner that keeps businesses moving everywhere.
+                We aim to build a connected, technology-enabled logistics network that delivers
+                smarter solutions, stronger visibility, and consistent service across every journey.
               </p>
-              <div className="mv-footer">CONNECTED · SMARTER · EVERYWHERE</div>
             </article>
           </div>
         </div>
@@ -101,31 +104,23 @@ export default function Home() {
       <section className="section"><div className="container"><div className="cta"><div><div className="kicker" style={{color:"#ffb27d"}}>Start a conversation</div><h2>Have a route in mind?</h2><p>Tell us your pickup, delivery, cargo and frequency. We’ll work from there.</p></div><Link href="/quote" className="btn btn-primary">Get a Quote</Link></div></div></section>
 
       <style jsx global>{`
-        .mission-vision-section{position:relative;overflow:hidden;padding:105px 0 115px;background:#07152f;color:#fff}
-        .mission-vision-section:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,106,0,.13),transparent 32%),linear-gradient(115deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(25deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:auto,70px 70px,90px 90px;pointer-events:none}
-        .mission-vision-heading{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:end;margin-bottom:58px}
-        .mission-vision-heading .kicker{margin-bottom:16px}
-        .mission-vision-heading h2{margin:0;color:#fff;font-size:clamp(42px,5.5vw,72px);line-height:.98;letter-spacing:-.045em;font-weight:900}
+        .mission-vision-section{padding:92px 0 96px;background:#fff;border-top:1px solid #eef1f5;border-bottom:1px solid #eef1f5}
+        .mission-vision-heading{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:end;margin-bottom:48px}
+        .mission-vision-heading .kicker{margin-bottom:18px}
+        .mission-vision-heading h2{margin:0;color:var(--navy);font-size:clamp(40px,5vw,64px);line-height:1.02;letter-spacing:-.045em;font-weight:900}
         .mission-vision-heading h2 span{color:#ff6a00}
-        .mission-vision-heading>p{margin:0 0 5px;color:#b9c7da;font-size:17px;line-height:1.75;max-width:500px}
-        .mission-vision-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:22px}
-        .mission-vision-card{position:relative;min-height:475px;padding:34px 36px 28px;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.13);box-shadow:0 25px 70px rgba(0,0,0,.22);transition:transform .3s ease,border-color .3s ease}
-        .mission-vision-card:hover{transform:translateY(-7px);border-color:rgba(255,106,0,.55)}
-        .mission-card{background:linear-gradient(145deg,#102958,#0b1d40)}
-        .vision-card{background:linear-gradient(145deg,#ff7a1a,#e95700)}
-        .vision-card .mv-number,.vision-card .mv-label,.vision-card p,.vision-card .mv-footer{color:rgba(255,255,255,.82)}
-        .vision-card .mv-mark{color:#fff;border-color:rgba(255,255,255,.3)}
-        .mv-topline{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.18em;font-weight:900}
-        .mv-number{color:#ff6a00;font-size:12px}
-        .mv-label{color:#9fb0c8}
-        .mv-mark{width:52px;height:52px;margin-top:52px;border:1px solid rgba(255,106,0,.35);border-radius:50%;display:grid;place-items:center;color:#ff6a00;font-size:25px}
-        .mission-vision-card h3{margin:22px 0 18px;font-size:clamp(35px,4vw,54px);line-height:.95;letter-spacing:-.04em;color:#fff}
-        .mission-vision-card h3 em{font-style:normal;color:#ff6a00}
-        .vision-card h3 em{color:#07152f}
-        .mission-vision-card p{max-width:560px;margin:0;color:#b9c7da;font-size:15px;line-height:1.72}
-        .mv-footer{margin-top:auto;padding-top:28px;color:#7890b2;font-size:9px;letter-spacing:.17em;font-weight:900}
-        @media(max-width:900px){.mission-vision-heading{grid-template-columns:1fr;gap:24px}.mission-vision-grid{grid-template-columns:1fr}.mission-vision-card{min-height:420px}}
-        @media(max-width:640px){.mission-vision-section{padding:72px 0 78px}.mission-vision-heading h2{font-size:43px}.mission-vision-heading>p{font-size:15px}.mission-vision-card{min-height:390px;padding:27px 25px 24px;border-radius:21px}.mv-mark{margin-top:38px}.mission-vision-card h3{font-size:40px}.mission-vision-card p{font-size:14px}.mv-footer{font-size:8px}}
+        .mission-vision-heading>p{margin:0 0 4px;color:#60718a;font-size:17px;line-height:1.7;max-width:560px}
+        .mission-vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+        .mission-vision-card{position:relative;padding:34px 38px 38px;min-height:300px;background:#f8fafc;border:1px solid #dfe5ed;border-radius:18px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+        .mission-vision-card:first-child{background:#f8fafc}
+        .mission-vision-card:last-child{background:#fff7f1;border-color:#f2ddd0}
+        .mission-vision-card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(7,21,47,.08);border-color:#ffb27d}
+        .mv-number{font-size:14px;font-weight:900;letter-spacing:.12em;color:#ff6a00;margin-bottom:8px}
+        .mv-label{font-size:12px;letter-spacing:.16em;font-weight:900;color:#65758c;margin-bottom:30px}
+        .mission-vision-card h3{margin:0 0 16px;color:var(--navy);font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-.035em}
+        .mission-vision-card p{margin:0;max-width:650px;color:#60718a;font-size:16px;line-height:1.72}
+        @media(max-width:900px){.mission-vision-heading{grid-template-columns:1fr;gap:24px}.mission-vision-grid{grid-template-columns:1fr}}
+        @media(max-width:640px){.mission-vision-section{padding:68px 0 72px}.mission-vision-heading h2{font-size:42px}.mission-vision-heading>p{font-size:15px}.mission-vision-card{padding:28px 24px 30px;min-height:0}.mission-vision-card h3{font-size:32px}.mission-vision-card p{font-size:14px}}
       `}</style>
     </>
   );
