@@ -1,30 +1,54 @@
 export default function AboutPage() {
   return (
     <>
-      <section className="page-hero">
+      <section className="why-hellcom">
         <div className="container">
-          <div className="kicker">About HELLCOM</div>
-          <h1>Move With Trust.</h1>
-          <p>HELLCOM Logistics is being built as a responsive B2B logistics partner focused on dependable transportation, clear communication and accountable execution.</p>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container split">
-          <div>
-            <div className="kicker">Our philosophy</div>
-            <h2>Make logistics easier to manage.</h2>
-            <p className="section-intro">
-              Businesses should not have to spend their day chasing vehicles, updates and delivery confirmations. HELLCOM is designed to simplify that operational burden.
+          <div className="why-hellcom-head">
+            <div className="why-hellcom-copy">
+              <div className="kicker">Why HELLCOM</div>
+              <h1>Logistics built around <span>accountability.</span></h1>
+            </div>
+            <p className="why-hellcom-lead">
+              We are building HELLCOM around a simple principle: when you hand us a shipment,
+              you should know exactly who is responsible for it.
             </p>
           </div>
-          <div className="quote-box">
-            <h3 style={{color:"var(--navy)",fontSize:28,margin:"0 0 10px"}}>What we stand for</h3>
-            <div className="checks">
-              <div className="check"><div className="check-mark">✓</div><div><strong>Reliability</strong><div className="muted">Do what we commit to.</div></div></div>
-              <div className="check"><div className="check-mark">✓</div><div><strong>Transparency</strong><div className="muted">Communicate clearly and early.</div></div></div>
-              <div className="check"><div className="check-mark">✓</div><div><strong>Accountability</strong><div className="muted">Own the shipment from start to finish.</div></div></div>
-              <div className="check"><div className="check-mark">✓</div><div><strong>Continuous Improvement</strong><div className="muted">Learn from every movement.</div></div></div>
-            </div>
+
+          <div className="mission-grid">
+            <article className="mission-card">
+              <div className="mission-number">01</div>
+              <div className="mission-content">
+                <h2>Our Mission</h2>
+                <h3>To make logistics simpler, more reliable, and more transparent.</h3>
+                <p>
+                  We connect every stage of the supply chain through dependable execution,
+                  clear communication, and technology-driven logistics solutions helping
+                  businesses move their goods with confidence.
+                </p>
+              </div>
+            </article>
+
+            <article className="mission-card">
+              <div className="mission-number">02</div>
+              <div className="mission-content">
+                <h2>Our Vision</h2>
+                <h3>To be a trusted logistics partner that keeps businesses moving everywhere.</h3>
+                <p>
+                  We aim to build a connected, technology-enabled logistics network that
+                  delivers smarter solutions, stronger visibility, and consistent service.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div className="accountability-bar">
+            <span>01</span><strong>Reliability</strong>
+            <i />
+            <span>02</span><strong>Transparency</strong>
+            <i />
+            <span>03</span><strong>Accountability</strong>
+            <i />
+            <span>04</span><strong>Continuous improvement</strong>
           </div>
         </div>
       </section>
