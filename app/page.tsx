@@ -2,12 +2,13 @@ import Link from "next/link";
 import HeroScrollStory from "./components/HeroScrollStory";
 
 const services = [
-  ["01", "Full Truckload", "Dedicated vehicle movement for larger, time-sensitive or route-specific freight."],
-  ["02", "Part Truckload", "Flexible freight movement for smaller consignments with cost-conscious planning."],
-  ["03", "B2B Transportation", "Reliable movement between plants, warehouses, distributors and customers."],
-  ["04", "Distribution", "Coordinated multi-location deliveries with a clear point of accountability."],
-  ["05", "Warehousing", "Scalable storage and dispatch support as your supply chain grows."],
-  ["06", "Customized Solutions", "Transport solutions designed around your routes, volumes and service requirements."],
+  ["01", "Air Freight", "Fast, secure air cargo solutions for urgent, sensitive and high-value shipments.", "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=85"],
+  ["02", "Ocean Freight", "Reliable global ocean freight for full-container, consolidation and project movements.", "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1000&q=85"],
+  ["03", "Rail Freight", "Efficient rail solutions for bulk, containerised and specialised cargo across connected corridors.", "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=85"],
+  ["04", "Inland Transportation", "Flexible first-mile, line-haul and last-mile transportation built around your cargo requirements.", "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=85"],
+  ["05", "Courier Services", "Express domestic and international courier solutions for parcels and e-commerce shipments.", "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1000&q=85"],
+  ["06", "Customs Clearance", "Structured customs support to keep import and export shipments compliant and moving.", "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85"],
+  ["07", "3PL Warehousing & Distribution", "Integrated warehousing and distribution support covering inventory, fulfilment and outbound execution.", "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1000&q=85"],
 ];
 
 const industries = [
@@ -63,17 +64,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section section-alt home-services-section">
         <div className="container">
           <div className="section-head">
-            <div><div className="kicker">Our services</div><h2>Solutions that keep cargo moving.</h2></div>
+            <div>
+              <div className="kicker">Our Services</div>
+              <h2>End-to-end logistics, built around your shipment.</h2>
+            </div>
             <Link href="/services" className="btn btn-secondary">View All Services</Link>
           </div>
-          <div className="cards">
-            {services.map(([num, title, desc]) => (
-              <div className="card" key={title}><div className="icon">{num}</div><h3>{title}</h3><p>{desc}</p></div>
-            ))}
+
+          <div className="home-services-marquee" aria-label="HELLCOM services">
+            <div className="home-services-track">
+              {[...services, ...services].map(([num, title, desc, image], index) => (
+                <Link
+                  href={`/services#service-${num}`}
+                  className="home-service-card"
+                  key={`${num}-${index}`}
+                  aria-hidden={index >= services.length}
+                  tabIndex={index >= services.length ? -1 : 0}
+                >
+                  <div className="home-service-image">
+                    <img src={image} alt={`${title} logistics`} loading="lazy" />
+                    <span>{num}</span>
+                  </div>
+                  <div className="home-service-body">
+                    <h3>{title}</h3>
+                    <p>{desc}</p>
+                    <span className="home-service-link">Explore service <b>→</b></span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
+
+          <div className="home-services-mobile-note">Scroll horizontally to explore all services.</div>
         </div>
       </section>
 
@@ -101,6 +126,30 @@ export default function Home() {
       </section>
 
       <section className="section"><div className="container"><div className="cta"><div><div className="kicker" style={{color:"#ffb27d"}}>Start a conversation</div><h2>Have a route in mind?</h2><p>Tell us your pickup, delivery, cargo and frequency. We’ll work from there.</p></div><Link href="/quote" className="btn btn-primary">Get a Quote</Link></div></div></section>
+
+      <style>{`
+        .home-services-section{overflow:hidden}
+        .home-services-marquee{position:relative;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;padding:8px 0 24px}
+        .home-services-track{display:flex;width:max-content;gap:20px;padding-left:20px;animation:homeServicesScroll 42s linear infinite}
+        .home-services-track:hover{animation-play-state:paused}
+        .home-service-card{width:330px;flex:0 0 330px;background:#fff;border:1px solid #e0e7ef;border-radius:22px;overflow:hidden;box-shadow:0 12px 34px rgba(11,29,64,.06);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;display:flex;flex-direction:column;text-decoration:none}
+        .home-service-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(11,29,64,.11);border-color:#d1dce8}
+        .home-service-image{height:185px;position:relative;overflow:hidden;background:#0b1d40}
+        .home-service-image img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+        .home-service-card:hover .home-service-image img{transform:scale(1.04)}
+        .home-service-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,21,47,.08),rgba(7,21,47,.56))}
+        .home-service-image>span{position:absolute;z-index:2;left:18px;top:17px;width:42px;height:42px;border-radius:12px;background:#fff;color:var(--orange);display:grid;place-items:center;font-weight:900;font-size:13px;box-shadow:0 8px 20px rgba(7,21,47,.18)}
+        .home-service-body{padding:22px 23px 24px;display:flex;flex-direction:column;min-height:190px}
+        .home-service-body h3{margin:0 0 8px;color:var(--navy);font-size:21px;line-height:1.2}
+        .home-service-body p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+        .home-service-link{margin-top:auto;padding-top:18px;color:var(--orange);font-size:13px;font-weight:900}
+        .home-service-link b{font-size:17px;margin-left:4px}
+        .home-services-mobile-note{display:none;color:var(--muted);font-size:12px;text-align:center;margin-top:2px}
+        @keyframes homeServicesScroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 10px))}}
+        @media(max-width:900px){.home-service-card{width:300px;flex-basis:300px}.home-services-track{gap:16px;animation-duration:36s}}
+        @media(max-width:640px){.home-services-marquee{overflow-x:auto;overflow-y:hidden;padding:8px 0 18px;scrollbar-width:none}.home-services-marquee::-webkit-scrollbar{display:none}.home-services-track{animation:none;padding:0 20px;width:max-content}.home-service-card{width:285px;flex-basis:285px}.home-services-mobile-note{display:block}}
+        @media(prefers-reduced-motion:reduce){.home-services-track{animation:none}}
+      `}</style>
     </>
   );
 }
