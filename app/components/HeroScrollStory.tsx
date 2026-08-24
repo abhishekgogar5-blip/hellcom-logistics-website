@@ -55,6 +55,46 @@ const stories: Story[] = [
   },
 ];
 
+const heroStyles = `
+  .hero-story-copy-panel {
+    max-width: 730px;
+    padding: 30px 36px 34px 0;
+    border-radius: 0 28px 28px 0;
+    background: linear-gradient(90deg, rgba(5,18,43,.82) 0%, rgba(5,18,43,.58) 72%, rgba(5,18,43,0) 100%);
+    text-shadow: 0 2px 18px rgba(0,0,0,.32);
+  }
+  .hero-story-copy-panel .hero-story-title { text-shadow: 0 3px 24px rgba(0,0,0,.42); }
+  .hero-story-copy-panel .hero-story-description { color: #fff; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,.55); }
+  .hero-story-side { position: relative; }
+  .hero-story-brand-line,
+  .hero-story-progress {
+    background: rgba(5,18,43,.52);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.16);
+  }
+  .hero-story-brand-line { padding: 12px 16px; border-radius: 14px; }
+  .hero-story-progress { width: min(360px, 100%); padding: 18px 20px; border-radius: 18px; gap: 14px; }
+  .hero-story-progress-item { grid-template-columns: 30px 1fr minmax(0, 190px); gap: 10px; }
+  .hero-story-progress-item strong { overflow: hidden; text-overflow: ellipsis; }
+  .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
+  .hero-story-vignette {
+    background:
+      linear-gradient(90deg, rgba(5,18,43,.96) 0%, rgba(5,18,43,.78) 28%, rgba(5,18,43,.28) 64%, rgba(5,18,43,.38) 100%),
+      linear-gradient(0deg, rgba(5,18,43,.78) 0%, transparent 42%, rgba(5,18,43,.18) 100%);
+  }
+  @media (max-width: 900px) {
+    .hero-story-content { grid-template-columns: 1fr; gap: 0; }
+    .hero-story-copy { padding-top: 0; }
+    .hero-story-copy-panel { max-width: 100%; padding: 24px 22px; border-radius: 18px; background: rgba(5,18,43,.64); }
+    .hero-story-title { font-size: clamp(44px, 12vw, 70px); }
+    .hero-story-description { font-size: 15px; }
+    .hero-story-side { display: none; }
+    .hero-story-bottom { padding-bottom: 14px; }
+  }
+`;
+
 export default function HeroScrollStory() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -111,6 +151,7 @@ export default function HeroScrollStory() {
 
   return (
     <section ref={sectionRef} className="hero-scroll-story" style={{ height: `${stories.length * 100}vh` }}>
+      <style>{heroStyles}</style>
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
           {stories.map((story, i) => (
