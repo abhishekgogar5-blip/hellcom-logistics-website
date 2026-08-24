@@ -24,44 +24,52 @@ export default function Home() {
     <>
       <HeroScrollStory />
 
-      {/* Why HELLCOM / Mission & Vision — intentionally placed directly below the hero */}
-      <section className="section">
+      {/* Why HELLCOM — premium mission and vision story */}
+      <section className="mission-vision-section">
         <div className="container">
-          <div className="section-head">
+          <div className="mission-vision-heading">
             <div>
               <div className="kicker">Why HELLCOM</div>
-              <h2>Logistics built around accountability.</h2>
+              <h2>Built to move your business<br /><span>with confidence.</span></h2>
             </div>
-            <p className="section-intro" style={{ maxWidth: 560, margin: 0 }}>
-              We are building HELLCOM around a simple principle: when you hand us a shipment,
-              you should know exactly who is responsible for it.
+            <p>
+              Logistics should feel simple on your side. One accountable partner,
+              clear communication and dependable execution from the first mile to the last.
             </p>
           </div>
 
-          <div className="cards" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-            <div className="card">
-              <div className="icon">01</div>
-              <h3>Our Mission</h3>
+          <div className="mission-vision-grid">
+            <article className="mission-vision-card mission-card">
+              <div className="mv-topline">
+                <span className="mv-number">01</span>
+                <span className="mv-label">Our Mission</span>
+              </div>
+              <div className="mv-mark">→</div>
+              <h3>Make logistics<br /><em>simpler.</em></h3>
               <p>
-                <strong>To make logistics simpler, more reliable, and more transparent.</strong>
-                <br /><br />
+                To make logistics simpler, more reliable, and more transparent.
                 We connect every stage of the supply chain through dependable execution,
-                clear communication, and technology-driven logistics solutions helping
+                clear communication, and technology-driven logistics solutions — helping
                 businesses move their goods with confidence.
               </p>
-            </div>
+              <div className="mv-footer">SIMPLER · RELIABLE · TRANSPARENT</div>
+            </article>
 
-            <div className="card">
-              <div className="icon">02</div>
-              <h3>Our Vision</h3>
+            <article className="mission-vision-card vision-card">
+              <div className="mv-topline">
+                <span className="mv-number">02</span>
+                <span className="mv-label">Our Vision</span>
+              </div>
+              <div className="mv-mark">↗</div>
+              <h3>Keep business<br /><em>moving everywhere.</em></h3>
               <p>
-                <strong>To be a trusted logistics partner that keeps businesses moving everywhere.</strong>
-                <br /><br />
+                To be a trusted logistics partner that keeps businesses moving everywhere.
                 We aim to build a connected, technology-enabled logistics network that
                 delivers smarter solutions, stronger visibility, and consistent service
                 across every journey.
               </p>
-            </div>
+              <div className="mv-footer">CONNECTED · SMARTER · EVERYWHERE</div>
+            </article>
           </div>
         </div>
       </section>
