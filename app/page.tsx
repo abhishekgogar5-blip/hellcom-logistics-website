@@ -28,8 +28,8 @@ export default function Home() {
         <div className="container">
           <div className="why-hellcom-head">
             <div className="why-hellcom-copy">
-              <div className="kicker">Why HELLCom</div>
-              <h1>
+              <div className="kicker" style={{fontSize:14}}>Why HELLCom</div>
+              <h1 style={{fontSize:34, lineHeight:1.15, letterSpacing:"-.025em"}}>
                 <span>Logistics built around</span>
                 <span>accountability.</span>
               </h1>
