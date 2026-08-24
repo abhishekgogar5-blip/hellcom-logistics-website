@@ -20,7 +20,7 @@ const stories: Story[] = [
     description:
       "Flexible warehousing support for receiving, storage, handling and dispatch — built around the way your business moves.",
     image: "/visuals/hellcom-1.webp",
-    alt: "HELLCOM logistics warehouse loading operation",
+    alt: "HELLCOM Logistics warehouse loading operation",
   },
   {
     number: "02",
@@ -29,25 +29,34 @@ const stories: Story[] = [
     description:
       "Reliable road movement connecting plants, warehouses, ports and customers with clear coordination from pickup to delivery.",
     image: "/visuals/hellcom-2.webp",
-    alt: "HELLCOM logistics road transportation",
+    alt: "HELLCOM Logistics truck on the road",
   },
   {
     number: "03",
-    eyebrow: "Customs Clearance",
-    title: "Through customs.\nWithout the confusion.",
+    eyebrow: "Customs Clearance (Import / Export)",
+    title: "Clear customs.\nKeep cargo moving.",
     description:
       "Import and export coordination designed to keep documentation, clearance and cargo movement aligned.",
     image: "/visuals/hellcom-3.webp",
-    alt: "HELLCOM logistics container and customs operation",
+    alt: "HELLCOM Logistics container handling operation",
   },
   {
     number: "04",
-    eyebrow: "Freight Forwarding • Air / Sea",
-    title: "From origin\nto destination.",
+    eyebrow: "Sea Freight Forwarding (FCL / LCL)",
+    title: "Across oceans.\nWithout the complexity.",
     description:
-      "Air and sea freight coordination for businesses that need dependable international movement and visibility.",
+      "FCL and LCL sea freight coordination for dependable international movement, port connectivity and shipment visibility.",
     image: "/visuals/hellcom-4.webp",
-    alt: "HELLCOM logistics air and sea freight",
+    alt: "HELLCOM Logistics sea freight containers",
+  },
+  {
+    number: "05",
+    eyebrow: "Air Freight",
+    title: "When time matters.\nFly it faster.",
+    description:
+      "Air freight solutions for urgent and time-sensitive cargo, connecting your shipments to global destinations.",
+    image: "/visuals/hellcom-5.webp",
+    alt: "HELLCOM Logistics air freight aircraft",
   },
 ];
 
@@ -65,21 +74,24 @@ export default function HeroScrollStory() {
 
     const update = () => {
       frame = 0;
+
       const rect = section.getBoundingClientRect();
       const scrollable = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
       const exact = progress * (stories.length - 1);
-      const index = Math.min(Math.floor(exact + 0.5), stories.length - 1);
-      const local = exact - Math.floor(exact);
+      const index = Math.min(Math.max(Math.round(exact), 0), stories.length - 1);
 
       imageRefs.current.forEach((el, i) => {
         if (!el) return;
+
         const distance = Math.abs(exact - i);
-        const opacity = Math.max(0, 1 - distance * 1.35);
-        const scale = 1.08 - Math.min(distance, 1) * 0.05;
-        const shift = (i - exact) * 3;
+        const opacity = Math.max(0, 1 - distance);
+        const scale = 1.06 - Math.min(distance, 1) * 0.04;
+        const shift = (i - exact) * 2.5;
+
         el.style.opacity = String(opacity);
         el.style.transform = `scale(${scale}) translate3d(${shift}%, 0, 0)`;
+        el.style.zIndex = String(20 - Math.round(distance * 10));
       });
 
       if (index !== lastIndex) {
@@ -88,7 +100,6 @@ export default function HeroScrollStory() {
       }
 
       section.style.setProperty("--story-progress", progress.toFixed(4));
-      section.style.setProperty("--story-local", local.toFixed(4));
     };
 
     const onScroll = () => {
@@ -109,7 +120,11 @@ export default function HeroScrollStory() {
   const current = stories[active];
 
   return (
-    <section ref={sectionRef} className="hero-scroll-story">
+    <section
+      ref={sectionRef}
+      className="hero-scroll-story"
+      style={{ height: `${stories.length * 100}vh` }}
+    >
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
           {stories.map((story, i) => (
@@ -119,11 +134,15 @@ export default function HeroScrollStory() {
               ref={(el) => {
                 imageRefs.current[i] = el;
               }}
-              style={{ opacity: i === 0 ? 1 : 0 }}
+              style={{
+                opacity: i === 0 ? 1 : 0,
+                zIndex: i === 0 ? 20 : 0,
+              }}
             >
               <img src={story.image} alt="" />
             </div>
           ))}
+
           <div className="hero-story-vignette" />
           <div className="hero-story-grid" />
           <div className="hero-story-orange-glow" />
@@ -165,12 +184,14 @@ export default function HeroScrollStory() {
             <div className="hero-story-progress">
               {stories.map((story, i) => (
                 <div
-                  className={`hero-story-progress-item ${i === active ? "is-active" : ""}`}
+                  className={`hero-story-progress-item ${
+                    i === active ? "is-active" : ""
+                  }`}
                   key={story.number}
                 >
                   <span>{story.number}</span>
                   <i />
-                  <strong>{story.eyebrow.split(" • ")[0]}</strong>
+                  <strong>{story.eyebrow}</strong>
                 </div>
               ))}
             </div>
