@@ -16,7 +16,6 @@ export default function AboutPage() {
 
           <div className="mission-grid">
             <article className="mission-card">
-              <div className="mission-number">01</div>
               <div className="mission-content">
                 <h2>Our Mission</h2>
                 <h3>To make logistics simpler, more reliable, and more transparent.</h3>
@@ -29,7 +28,6 @@ export default function AboutPage() {
             </article>
 
             <article className="mission-card">
-              <div className="mission-number">02</div>
               <div className="mission-content">
                 <h2>Our Vision</h2>
                 <h3>To be a trusted logistics partner that keeps businesses moving everywhere.</h3>
