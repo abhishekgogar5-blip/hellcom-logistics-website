@@ -75,12 +75,45 @@ const heroStyles = `
   .hero-story-progress-item { grid-template-columns: 32px minmax(24px, 1fr) minmax(0, 215px); gap: 10px; min-height: 20px; font-size: 10px; }
   .hero-story-progress-item strong { overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.2; }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
-  .hero-story-vignette {
-    background:
-      linear-gradient(90deg, rgba(5,18,43,.74) 0%, rgba(5,18,43,.58) 28%, rgba(5,18,43,.14) 65%, rgba(5,18,43,.22) 100%),
-      linear-gradient(0deg, rgba(5,18,43,.42) 0%, transparent 48%, rgba(5,18,43,.08) 100%);
+
+  /* Continuous hero video: the video plays behind the scroll-driven service copy. */
+  .hero-story-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    pointer-events: none;
+    background: #05122b;
   }
+  .hero-story-video-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-story-video-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(5,18,43,.24);
+    pointer-events: none;
+  }
+  .hero-story-vignette {
+    z-index: 3;
+    background:
+      linear-gradient(90deg, rgba(5,18,43,.70) 0%, rgba(5,18,43,.48) 28%, rgba(5,18,43,.08) 65%, rgba(5,18,43,.18) 100%),
+      linear-gradient(0deg, rgba(5,18,43,.34) 0%, transparent 48%, rgba(5,18,43,.08) 100%);
+  }
+  .hero-story-grid,
+  .hero-story-orange-glow { z-index: 4; }
+  .hero-story-content,
+  .hero-story-bottom { position: relative; z-index: 5; }
   .hero-story-bottom { padding-bottom: 10px; }
+
   @media (max-width: 1100px) {
     .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; }
     .hero-story-progress { width: 285px; }
@@ -96,13 +129,40 @@ const heroStyles = `
     .hero-story-actions .btn { padding: 11px 16px; }
     .hero-story-side { display: none; }
     .hero-story-bottom { padding-bottom: 8px; }
+    .hero-story-video { object-position: center center; }
+    .hero-story-video-shade { background: rgba(5,18,43,.30); }
   }
 `;
 
 export default function HeroScrollStory() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      const promise = video.play();
+      if (promise !== undefined) promise.catch(() => undefined);
+    };
+
+    playVideo();
+    video.addEventListener("loadeddata", playVideo);
+    document.addEventListener("visibilitychange", playVideo);
+
+    return () => {
+      video.removeEventListener("loadeddata", playVideo);
+      document.removeEventListener("visibilitychange", playVideo);
+    };
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -154,11 +214,22 @@ export default function HeroScrollStory() {
       <style>{heroStyles}</style>
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
-          {stories.map((story, i) => (
-            <div className="hero-story-image" key={story.image} ref={(el) => { imageRefs.current[i] = el; }} style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 20 : 0 }}>
-              <img src={story.image} alt="" loading="eager" decoding="async" />
-            </div>
-          ))}
+          <div
+            className="hero-story-video-fallback"
+            style={{ backgroundImage: `url(${stories[0].image})` }}
+          />
+          <video
+            ref={videoRef}
+            className="hero-story-video"
+            src="/Videos/hellcom-hero.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          <div className="hero-story-video-shade" />
           <div className="hero-story-vignette" />
           <div className="hero-story-grid" />
           <div className="hero-story-orange-glow" />
