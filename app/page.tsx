@@ -24,28 +24,39 @@ export default function Home() {
     <>
       <HeroScrollStory />
 
-      <section className="hero-trust-strip">
+      <section className="why-hellcom">
         <div className="container">
-          <div className="trust-grid">
-            <div>
-              <span className="trust-number">01</span>
-              <div>
-                <strong>Reliable Execution</strong>
-                <p>Focused coordination from pickup to delivery.</p>
+          <div className="why-hellcom-head">
+            <div className="why-hellcom-copy">
+              <div className="kicker">Why HELLCom</div>
+              <h1>
+                <span>Logistics built around</span>
+                <span>accountability.</span>
+              </h1>
+            </div>
+            <p className="why-hellcom-lead">
+              We are building HELLCOM around a simple principle: when you hand us a shipment, you should know exactly who is responsible for it.
+            </p>
+          </div>
+
+          <div className="mission-grid">
+            <div className="mission-card">
+              <div className="mission-content">
+                <h2>Our Mission</h2>
+                <h3>To make logistics simpler, more reliable, and more transparent.</h3>
+                <p>
+                  We connect every stage of the supply chain through dependable execution, clear communication, and technology-driven logistics solutions helping businesses move their goods with confidence.
+                </p>
               </div>
             </div>
-            <div>
-              <span className="trust-number">02</span>
-              <div>
-                <strong>Transparent Communication</strong>
-                <p>Clear updates and proactive shipment visibility.</p>
-              </div>
-            </div>
-            <div>
-              <span className="trust-number">03</span>
-              <div>
-                <strong>Single Point of Contact</strong>
-                <p>One accountable team coordinating your movement.</p>
+
+            <div className="mission-card">
+              <div className="mission-content">
+                <h2>Our Vision</h2>
+                <h3>To be a trusted logistics partner that keeps businesses moving everywhere.</h3>
+                <p>
+                  We aim to build a connected, technology-enabled logistics network that delivers smarter solutions, stronger visibility, and consistent service across every journey.
+                </p>
               </div>
             </div>
           </div>
