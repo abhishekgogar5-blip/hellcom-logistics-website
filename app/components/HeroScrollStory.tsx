@@ -56,21 +56,43 @@ const stories: Story[] = [
 ];
 
 const heroStyles = `
+  .hero-story-copy {
+    align-self: center;
+  }
   .hero-story-copy-panel {
-    max-width: 760px;
-    padding: 30px 38px 34px 0;
-    border-radius: 0 28px 28px 0;
-    background: linear-gradient(90deg, rgba(5,18,43,.94) 0%, rgba(5,18,43,.82) 55%, rgba(5,18,43,.24) 88%, rgba(5,18,43,0) 100%);
-    text-shadow: 0 2px 18px rgba(0,0,0,.34);
+    max-width: 720px;
+    padding: 24px 34px 28px 0;
+    border-radius: 0 24px 24px 0;
+    background: linear-gradient(90deg, rgba(5,18,43,.78) 0%, rgba(5,18,43,.62) 55%, rgba(5,18,43,.16) 88%, rgba(5,18,43,0) 100%);
+    text-shadow: 0 2px 16px rgba(0,0,0,.28);
   }
   .hero-story-copy-panel .hero-story-title {
-    text-shadow: 0 4px 26px rgba(0,0,0,.55);
+    font-size: clamp(56px, 6.2vw, 88px) !important;
+    line-height: .92 !important;
+    letter-spacing: -.045em !important;
+    margin: 18px 0 20px !important;
+    text-shadow: 0 4px 22px rgba(0,0,0,.42);
+  }
+  .hero-story-copy-panel .hero-story-title span {
+    display: block;
   }
   .hero-story-copy-panel .hero-story-description {
     color: #fff;
-    font-weight: 600;
-    max-width: 640px;
-    text-shadow: 0 2px 12px rgba(0,0,0,.65);
+    font-size: clamp(15px, 1.25vw, 18px) !important;
+    line-height: 1.45 !important;
+    font-weight: 500;
+    max-width: 610px;
+    margin: 0 0 22px !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.58);
+  }
+  .hero-story-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-story-actions .btn {
+    white-space: nowrap;
   }
   .hero-story-side { position: relative; }
   .hero-story-brand-line,
@@ -82,20 +104,20 @@ const heroStyles = `
     box-shadow: 0 14px 36px rgba(0,0,0,.22);
   }
   .hero-story-brand-line {
-    padding: 12px 16px;
+    padding: 11px 15px;
     border-radius: 14px;
     min-width: 210px;
   }
   .hero-story-progress {
     width: min(390px, 100%);
-    padding: 20px 22px;
+    padding: 18px 20px;
     border-radius: 20px;
-    gap: 16px;
+    gap: 13px;
   }
   .hero-story-progress-item {
     grid-template-columns: 34px minmax(28px, 1fr) minmax(0, 220px);
     gap: 12px;
-    min-height: 22px;
+    min-height: 21px;
     font-size: 11px;
   }
   .hero-story-progress-item strong {
@@ -104,25 +126,40 @@ const heroStyles = `
     white-space: normal;
     line-height: 1.25;
   }
-  .hero-story-image img { filter: saturate(1.03) contrast(1.04); }
+  .hero-story-image img {
+    filter: saturate(1.03) contrast(1.03);
+  }
   .hero-story-vignette {
     background:
-      linear-gradient(90deg, rgba(5,18,43,.98) 0%, rgba(5,18,43,.82) 26%, rgba(5,18,43,.30) 62%, rgba(5,18,43,.42) 100%),
-      linear-gradient(0deg, rgba(5,18,43,.82) 0%, transparent 45%, rgba(5,18,43,.18) 100%);
+      linear-gradient(90deg, rgba(5,18,43,.76) 0%, rgba(5,18,43,.60) 28%, rgba(5,18,43,.16) 65%, rgba(5,18,43,.24) 100%),
+      linear-gradient(0deg, rgba(5,18,43,.46) 0%, transparent 48%, rgba(5,18,43,.10) 100%);
+  }
+  .hero-story-bottom {
+    padding-bottom: 12px;
   }
   @media (max-width: 1100px) {
-    .hero-story-content { grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; }
-    .hero-story-progress { width: 320px; }
+    .hero-story-content { grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; }
+    .hero-story-progress { width: 300px; }
     .hero-story-progress-item { grid-template-columns: 30px 28px minmax(0, 1fr); }
+    .hero-story-copy-panel .hero-story-title { font-size: clamp(52px, 6vw, 78px) !important; }
   }
   @media (max-width: 900px) {
     .hero-story-content { grid-template-columns: 1fr; gap: 0; }
     .hero-story-copy { padding-top: 0; }
-    .hero-story-copy-panel { max-width: 100%; padding: 24px 22px; border-radius: 18px; background: rgba(5,18,43,.76); }
-    .hero-story-title { font-size: clamp(44px, 12vw, 70px); }
-    .hero-story-description { font-size: 15px; }
+    .hero-story-copy-panel {
+      max-width: 100%;
+      padding: 22px 20px 24px;
+      border-radius: 18px;
+      background: rgba(5,18,43,.66);
+    }
+    .hero-story-copy-panel .hero-story-title {
+      font-size: clamp(42px, 11vw, 62px) !important;
+      line-height: .94 !important;
+      margin: 14px 0 16px !important;
+    }
+    .hero-story-description { font-size: 15px !important; }
     .hero-story-side { display: none; }
-    .hero-story-bottom { padding-bottom: 14px; }
+    .hero-story-bottom { padding-bottom: 10px; }
   }
 `;
 
@@ -181,7 +218,7 @@ export default function HeroScrollStory() {
   const current = stories[active];
 
   return (
-    <section ref={sectionRef} className="hero-scroll-story" style={{ height: `${stories.length * 100}vh` }}>
+    <section ref={sectionRef} className="hero-scroll-story" style={{ height: `${stories.length * 88}vh` }}>
       <style>{heroStyles}</style>
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
