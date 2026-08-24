@@ -17,7 +17,7 @@ export default function AboutPage() {
           <div className="mission-grid">
             <article className="mission-card">
               <div className="mission-content">
-                <h2>Our Mission</h2>
+                <h2 style={{ color: "var(--orange)", fontSize: "34px", fontWeight: 900, letterSpacing: "-.03em", margin: "0 0 14px" }}>Our Mission</h2>
                 <h3>To make logistics simpler, more reliable, and more transparent.</h3>
                 <p>
                   We connect every stage of the supply chain through dependable execution,
@@ -29,7 +29,7 @@ export default function AboutPage() {
 
             <article className="mission-card">
               <div className="mission-content">
-                <h2>Our Vision</h2>
+                <h2 style={{ color: "var(--orange)", fontSize: "34px", fontWeight: 900, letterSpacing: "-.03em", margin: "0 0 14px" }}>Our Vision</h2>
                 <h3>To be a trusted logistics partner that keeps businesses moving everywhere.</h3>
                 <p>
                   We aim to build a connected, technology-enabled logistics network that
