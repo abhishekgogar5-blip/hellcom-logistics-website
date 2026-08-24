@@ -13,86 +13,53 @@ type Story = {
 };
 
 const stories: Story[] = [
-  {
-    number: "01",
-    eyebrow: "Warehousing",
-    title: "Store smarter.\nMove faster.",
-    description: "Flexible warehousing support for receiving, storage, handling and dispatch — built around the way your business moves.",
-    image: "/visuals/hellcom-1.webp",
-    alt: "HELLCOM Logistics warehouse loading operation",
-  },
-  {
-    number: "02",
-    eyebrow: "Haulage & Inland Logistics",
-    title: "Every route.\nOne accountable team.",
-    description: "Reliable road movement connecting plants, warehouses, ports and customers with clear coordination from pickup to delivery.",
-    image: "/visuals/hellcom-2.webp",
-    alt: "HELLCOM Logistics truck on the road",
-  },
-  {
-    number: "03",
-    eyebrow: "Customs Clearance (Import / Export)",
-    title: "Clear customs.\nKeep cargo moving.",
-    description: "Import and export coordination designed to keep documentation, clearance and cargo movement aligned.",
-    image: "/visuals/hellcom-3.webp",
-    alt: "HELLCOM Logistics container handling operation",
-  },
-  {
-    number: "04",
-    eyebrow: "Sea Freight Forwarding (FCL / LCL)",
-    title: "Across oceans.\nWithout the complexity.",
-    description: "FCL and LCL sea freight coordination for dependable international movement, port connectivity and shipment visibility.",
-    image: "/visuals/4.png",
-    alt: "HELLCOM Logistics sea freight containers",
-  },
-  {
-    number: "05",
-    eyebrow: "Air Freight",
-    title: "When time matters.\nFly it faster.",
-    description: "Air freight solutions for urgent and time-sensitive cargo, connecting your shipments to global destinations.",
-    image: "/visuals/hellcom-5.webp",
-    alt: "HELLCOM Logistics air freight aircraft",
-  },
+  { number: "01", eyebrow: "Warehousing", title: "Store smarter.\nMove faster.", description: "Flexible warehousing support for receiving, storage, handling and dispatch — built around the way your business moves.", image: "/visuals/hellcom-1.webp", alt: "HELLCOM Logistics warehouse loading operation" },
+  { number: "02", eyebrow: "Haulage & Inland Logistics", title: "Every route.\nOne accountable team.", description: "Reliable road movement connecting plants, warehouses, ports and customers with clear coordination from pickup to delivery.", image: "/visuals/hellcom-2.webp", alt: "HELLCOM Logistics truck on the road" },
+  { number: "03", eyebrow: "Customs Clearance (Import / Export)", title: "Clear customs.\nKeep cargo moving.", description: "Import and export coordination designed to keep documentation, clearance and cargo movement aligned.", image: "/visuals/hellcom-3.webp", alt: "HELLCOM Logistics container handling operation" },
+  { number: "04", eyebrow: "Sea Freight Forwarding (FCL / LCL)", title: "Across oceans.\nWithout the complexity.", description: "FCL and LCL sea freight coordination for dependable international movement, port connectivity and shipment visibility.", image: "/visuals/4.png", alt: "HELLCOM Logistics sea freight containers" },
+  { number: "05", eyebrow: "Air Freight", title: "When time matters.\nFly it faster.", description: "Air freight solutions for urgent and time-sensitive cargo, connecting your shipments to global destinations.", image: "/visuals/hellcom-5.webp", alt: "HELLCOM Logistics air freight aircraft" },
 ];
 
 const heroStyles = `
   .hero-story-copy {
     align-self: center;
+    transform: translateY(-2vh);
   }
   .hero-story-copy-panel {
-    max-width: 720px;
-    padding: 24px 34px 28px 0;
-    border-radius: 0 24px 24px 0;
-    background: linear-gradient(90deg, rgba(5,18,43,.78) 0%, rgba(5,18,43,.62) 55%, rgba(5,18,43,.16) 88%, rgba(5,18,43,0) 100%);
-    text-shadow: 0 2px 16px rgba(0,0,0,.28);
+    max-width: 700px;
+    padding: 20px 30px 22px 0;
+    border-radius: 0 22px 22px 0;
+    background: linear-gradient(90deg, rgba(5,18,43,.78) 0%, rgba(5,18,43,.60) 55%, rgba(5,18,43,.14) 88%, rgba(5,18,43,0) 100%);
+    text-shadow: 0 2px 14px rgba(0,0,0,.28);
   }
   .hero-story-copy-panel .hero-story-title {
-    font-size: clamp(56px, 6.2vw, 88px) !important;
-    line-height: .92 !important;
+    font-size: clamp(48px, 5.25vw, 74px) !important;
+    line-height: .9 !important;
     letter-spacing: -.045em !important;
-    margin: 18px 0 20px !important;
-    text-shadow: 0 4px 22px rgba(0,0,0,.42);
+    margin: 14px 0 14px !important;
+    max-width: 680px;
+    text-shadow: 0 3px 18px rgba(0,0,0,.42);
   }
-  .hero-story-copy-panel .hero-story-title span {
-    display: block;
-  }
+  .hero-story-copy-panel .hero-story-title span { display: block; }
   .hero-story-copy-panel .hero-story-description {
     color: #fff;
-    font-size: clamp(15px, 1.25vw, 18px) !important;
-    line-height: 1.45 !important;
+    font-size: clamp(14px, 1.05vw, 16px) !important;
+    line-height: 1.42 !important;
     font-weight: 500;
-    max-width: 610px;
-    margin: 0 0 22px !important;
-    text-shadow: 0 2px 10px rgba(0,0,0,.58);
+    max-width: 600px;
+    margin: 0 0 16px !important;
+    text-shadow: 0 2px 9px rgba(0,0,0,.62);
   }
   .hero-story-actions {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-top: 0 !important;
   }
   .hero-story-actions .btn {
     white-space: nowrap;
+    padding: 12px 19px;
   }
   .hero-story-side { position: relative; }
   .hero-story-brand-line,
@@ -103,63 +70,32 @@ const heroStyles = `
     -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 14px 36px rgba(0,0,0,.22);
   }
-  .hero-story-brand-line {
-    padding: 11px 15px;
-    border-radius: 14px;
-    min-width: 210px;
-  }
-  .hero-story-progress {
-    width: min(390px, 100%);
-    padding: 18px 20px;
-    border-radius: 20px;
-    gap: 13px;
-  }
-  .hero-story-progress-item {
-    grid-template-columns: 34px minmax(28px, 1fr) minmax(0, 220px);
-    gap: 12px;
-    min-height: 21px;
-    font-size: 11px;
-  }
-  .hero-story-progress-item strong {
-    overflow: visible;
-    text-overflow: clip;
-    white-space: normal;
-    line-height: 1.25;
-  }
-  .hero-story-image img {
-    filter: saturate(1.03) contrast(1.03);
-  }
+  .hero-story-brand-line { padding: 10px 14px; border-radius: 14px; min-width: 205px; }
+  .hero-story-progress { width: min(370px, 100%); padding: 16px 18px; border-radius: 18px; gap: 12px; }
+  .hero-story-progress-item { grid-template-columns: 32px minmax(24px, 1fr) minmax(0, 215px); gap: 10px; min-height: 20px; font-size: 10px; }
+  .hero-story-progress-item strong { overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.2; }
+  .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
   .hero-story-vignette {
     background:
-      linear-gradient(90deg, rgba(5,18,43,.76) 0%, rgba(5,18,43,.60) 28%, rgba(5,18,43,.16) 65%, rgba(5,18,43,.24) 100%),
-      linear-gradient(0deg, rgba(5,18,43,.46) 0%, transparent 48%, rgba(5,18,43,.10) 100%);
+      linear-gradient(90deg, rgba(5,18,43,.74) 0%, rgba(5,18,43,.58) 28%, rgba(5,18,43,.14) 65%, rgba(5,18,43,.22) 100%),
+      linear-gradient(0deg, rgba(5,18,43,.42) 0%, transparent 48%, rgba(5,18,43,.08) 100%);
   }
-  .hero-story-bottom {
-    padding-bottom: 12px;
-  }
+  .hero-story-bottom { padding-bottom: 10px; }
   @media (max-width: 1100px) {
-    .hero-story-content { grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; }
-    .hero-story-progress { width: 300px; }
-    .hero-story-progress-item { grid-template-columns: 30px 28px minmax(0, 1fr); }
-    .hero-story-copy-panel .hero-story-title { font-size: clamp(52px, 6vw, 78px) !important; }
+    .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; }
+    .hero-story-progress { width: 285px; }
+    .hero-story-progress-item { grid-template-columns: 28px 24px minmax(0, 1fr); }
+    .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; }
   }
   @media (max-width: 900px) {
     .hero-story-content { grid-template-columns: 1fr; gap: 0; }
-    .hero-story-copy { padding-top: 0; }
-    .hero-story-copy-panel {
-      max-width: 100%;
-      padding: 22px 20px 24px;
-      border-radius: 18px;
-      background: rgba(5,18,43,.66);
-    }
-    .hero-story-copy-panel .hero-story-title {
-      font-size: clamp(42px, 11vw, 62px) !important;
-      line-height: .94 !important;
-      margin: 14px 0 16px !important;
-    }
-    .hero-story-description { font-size: 15px !important; }
+    .hero-story-copy { padding-top: 0; transform: translateY(-1vh); }
+    .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); }
+    .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; }
+    .hero-story-description { font-size: 14px !important; }
+    .hero-story-actions .btn { padding: 11px 16px; }
     .hero-story-side { display: none; }
-    .hero-story-bottom { padding-bottom: 10px; }
+    .hero-story-bottom { padding-bottom: 8px; }
   }
 `;
 
@@ -171,7 +107,6 @@ export default function HeroScrollStory() {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
     let frame = 0;
     let lastIndex = -1;
 
@@ -201,10 +136,7 @@ export default function HeroScrollStory() {
       section.style.setProperty("--story-progress", progress.toFixed(4));
     };
 
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(update);
-    };
-
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -223,18 +155,8 @@ export default function HeroScrollStory() {
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
           {stories.map((story, i) => (
-            <div
-              className="hero-story-image"
-              key={story.image}
-              ref={(el) => { imageRefs.current[i] = el; }}
-              style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 20 : 0 }}
-            >
-              <img
-                src={story.image}
-                alt=""
-                loading="eager"
-                decoding="async"
-              />
+            <div className="hero-story-image" key={story.image} ref={(el) => { imageRefs.current[i] = el; }} style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 20 : 0 }}>
+              <img src={story.image} alt="" loading="eager" decoding="async" />
             </div>
           ))}
           <div className="hero-story-vignette" />
@@ -268,9 +190,7 @@ export default function HeroScrollStory() {
             <div className="hero-story-progress" aria-label="Hero services">
               {stories.map((story, i) => (
                 <div className={`hero-story-progress-item ${i === active ? "is-active" : ""}`} key={story.number}>
-                  <span>{story.number}</span>
-                  <i />
-                  <strong>{story.eyebrow}</strong>
+                  <span>{story.number}</span><i /><strong>{story.eyebrow}</strong>
                 </div>
               ))}
             </div>
@@ -279,9 +199,7 @@ export default function HeroScrollStory() {
 
         <div className="hero-story-bottom">
           <div className="container">
-            <span className="hero-story-scroll-line" />
-            <span>Scroll to explore</span>
-            <span className="hero-story-scroll-arrow">↓</span>
+            <span className="hero-story-scroll-line" /><span>Scroll to explore</span><span className="hero-story-scroll-arrow">↓</span>
           </div>
         </div>
       </div>
