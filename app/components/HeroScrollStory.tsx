@@ -57,37 +57,68 @@ const stories: Story[] = [
 
 const heroStyles = `
   .hero-story-copy-panel {
-    max-width: 730px;
-    padding: 30px 36px 34px 0;
+    max-width: 760px;
+    padding: 30px 38px 34px 0;
     border-radius: 0 28px 28px 0;
-    background: linear-gradient(90deg, rgba(5,18,43,.82) 0%, rgba(5,18,43,.58) 72%, rgba(5,18,43,0) 100%);
-    text-shadow: 0 2px 18px rgba(0,0,0,.32);
+    background: linear-gradient(90deg, rgba(5,18,43,.94) 0%, rgba(5,18,43,.82) 55%, rgba(5,18,43,.24) 88%, rgba(5,18,43,0) 100%);
+    text-shadow: 0 2px 18px rgba(0,0,0,.34);
   }
-  .hero-story-copy-panel .hero-story-title { text-shadow: 0 3px 24px rgba(0,0,0,.42); }
-  .hero-story-copy-panel .hero-story-description { color: #fff; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,.55); }
+  .hero-story-copy-panel .hero-story-title {
+    text-shadow: 0 4px 26px rgba(0,0,0,.55);
+  }
+  .hero-story-copy-panel .hero-story-description {
+    color: #fff;
+    font-weight: 600;
+    max-width: 640px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.65);
+  }
   .hero-story-side { position: relative; }
   .hero-story-brand-line,
   .hero-story-progress {
-    background: rgba(5,18,43,.52);
-    border: 1px solid rgba(255,255,255,.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 14px 36px rgba(0,0,0,.16);
+    background: rgba(5,18,43,.72);
+    border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.22);
   }
-  .hero-story-brand-line { padding: 12px 16px; border-radius: 14px; }
-  .hero-story-progress { width: min(360px, 100%); padding: 18px 20px; border-radius: 18px; gap: 14px; }
-  .hero-story-progress-item { grid-template-columns: 30px 1fr minmax(0, 190px); gap: 10px; }
-  .hero-story-progress-item strong { overflow: hidden; text-overflow: ellipsis; }
-  .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
+  .hero-story-brand-line {
+    padding: 12px 16px;
+    border-radius: 14px;
+    min-width: 210px;
+  }
+  .hero-story-progress {
+    width: min(390px, 100%);
+    padding: 20px 22px;
+    border-radius: 20px;
+    gap: 16px;
+  }
+  .hero-story-progress-item {
+    grid-template-columns: 34px minmax(28px, 1fr) minmax(0, 220px);
+    gap: 12px;
+    min-height: 22px;
+    font-size: 11px;
+  }
+  .hero-story-progress-item strong {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    line-height: 1.25;
+  }
+  .hero-story-image img { filter: saturate(1.03) contrast(1.04); }
   .hero-story-vignette {
     background:
-      linear-gradient(90deg, rgba(5,18,43,.96) 0%, rgba(5,18,43,.78) 28%, rgba(5,18,43,.28) 64%, rgba(5,18,43,.38) 100%),
-      linear-gradient(0deg, rgba(5,18,43,.78) 0%, transparent 42%, rgba(5,18,43,.18) 100%);
+      linear-gradient(90deg, rgba(5,18,43,.98) 0%, rgba(5,18,43,.82) 26%, rgba(5,18,43,.30) 62%, rgba(5,18,43,.42) 100%),
+      linear-gradient(0deg, rgba(5,18,43,.82) 0%, transparent 45%, rgba(5,18,43,.18) 100%);
+  }
+  @media (max-width: 1100px) {
+    .hero-story-content { grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; }
+    .hero-story-progress { width: 320px; }
+    .hero-story-progress-item { grid-template-columns: 30px 28px minmax(0, 1fr); }
   }
   @media (max-width: 900px) {
     .hero-story-content { grid-template-columns: 1fr; gap: 0; }
     .hero-story-copy { padding-top: 0; }
-    .hero-story-copy-panel { max-width: 100%; padding: 24px 22px; border-radius: 18px; background: rgba(5,18,43,.64); }
+    .hero-story-copy-panel { max-width: 100%; padding: 24px 22px; border-radius: 18px; background: rgba(5,18,43,.76); }
     .hero-story-title { font-size: clamp(44px, 12vw, 70px); }
     .hero-story-description { font-size: 15px; }
     .hero-story-side { display: none; }
@@ -119,8 +150,8 @@ export default function HeroScrollStory() {
         if (!el) return;
         const distance = Math.abs(exact - i);
         const opacity = Math.max(0, 1 - distance);
-        const scale = 1.04 - Math.min(distance, 1) * 0.025;
-        const shift = (i - exact) * 1.5;
+        const scale = 1.055 - Math.min(distance, 1) * 0.025;
+        const shift = (i - exact) * 1.25;
         el.style.opacity = String(opacity);
         el.style.transform = `scale(${scale}) translate3d(${shift}%, 0, 0)`;
         el.style.zIndex = String(20 - Math.round(distance * 10));
@@ -161,7 +192,12 @@ export default function HeroScrollStory() {
               ref={(el) => { imageRefs.current[i] = el; }}
               style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 20 : 0 }}
             >
-              <img src={story.image} alt="" loading={i === 0 ? "eager" : "lazy"} />
+              <img
+                src={story.image}
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
             </div>
           ))}
           <div className="hero-story-vignette" />
