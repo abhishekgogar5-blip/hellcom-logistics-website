@@ -24,26 +24,6 @@ export default function Home() {
     <>
       <HeroScrollStory />
 
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="kicker">Why HELLCOM</div>
-              <h2>Logistics built around accountability.</h2>
-            </div>
-            <p className="section-intro">
-              We are building HELLCOM around a simple principle: when you hand us a shipment, you should know exactly who is responsible for it.
-            </p>
-          </div>
-
-          <div className="cards">
-            <div className="card"><div className="icon">✓</div><h3>Reliable Execution</h3><p>Focused coordination from pickup to delivery.</p></div>
-            <div className="card"><div className="icon">↗</div><h3>Transparent Communication</h3><p>Clear updates and proactive shipment visibility.</p></div>
-            <div className="card"><div className="icon">◎</div><h3>Single Point of Contact</h3><p>One accountable team coordinating your movement.</p></div>
-          </div>
-        </div>
-      </section>
-
       <section className="section section-alt">
         <div className="container">
           <div className="section-head">
