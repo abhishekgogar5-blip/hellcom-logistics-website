@@ -42,7 +42,7 @@ const stories: Story[] = [
     eyebrow: "Sea Freight Forwarding (FCL / LCL)",
     title: "Across oceans.\nWithout the complexity.",
     description: "FCL and LCL sea freight coordination for dependable international movement, port connectivity and shipment visibility.",
-    image: "/visuals/hellcom-4.webp",
+    image: "/visuals/4.png",
     alt: "HELLCOM Logistics sea freight containers",
   },
   {
