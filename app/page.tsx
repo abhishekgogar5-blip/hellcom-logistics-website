@@ -24,6 +24,48 @@ export default function Home() {
     <>
       <HeroScrollStory />
 
+      {/* Why HELLCOM / Mission & Vision — intentionally placed directly below the hero */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <div className="kicker">Why HELLCOM</div>
+              <h2>Logistics built around accountability.</h2>
+            </div>
+            <p className="section-intro" style={{ maxWidth: 560, margin: 0 }}>
+              We are building HELLCOM around a simple principle: when you hand us a shipment,
+              you should know exactly who is responsible for it.
+            </p>
+          </div>
+
+          <div className="cards" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+            <div className="card">
+              <div className="icon">01</div>
+              <h3>Our Mission</h3>
+              <p>
+                <strong>To make logistics simpler, more reliable, and more transparent.</strong>
+                <br /><br />
+                We connect every stage of the supply chain through dependable execution,
+                clear communication, and technology-driven logistics solutions helping
+                businesses move their goods with confidence.
+              </p>
+            </div>
+
+            <div className="card">
+              <div className="icon">02</div>
+              <h3>Our Vision</h3>
+              <p>
+                <strong>To be a trusted logistics partner that keeps businesses moving everywhere.</strong>
+                <br /><br />
+                We aim to build a connected, technology-enabled logistics network that
+                delivers smarter solutions, stronger visibility, and consistent service
+                across every journey.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section section-alt">
         <div className="container">
           <div className="section-head">
