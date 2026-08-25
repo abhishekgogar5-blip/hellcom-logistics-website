@@ -71,6 +71,7 @@ export default function IndustriesPage() {
   return (
     <>
       <section className="industries-hero">
+        <div className="industries-hero-bg" aria-hidden="true" />
         <div className="industries-hero-glow" />
         <div className="container industries-hero-inner">
           <div className="industries-hero-copy">
@@ -81,8 +82,8 @@ export default function IndustriesPage() {
           </div>
           <div className="industries-hero-panel">
             <div className="hero-panel-line" />
-            <strong>11</strong>
-            <span>industry segments</span>
+            <strong>MULTIPLE</strong>
+            <span>Industry Segments</span>
             <small>One logistics partner across the movement.</small>
           </div>
         </div>
@@ -128,19 +129,21 @@ export default function IndustriesPage() {
       </section>
 
       <style>{`
-        .industries-hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#06142f 0%,#0b1d40 58%,#102a55 100%);color:#fff;padding:82px 0 88px}
-        .industries-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 25%,rgba(255,106,0,.22),transparent 28%),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:auto,72px 72px,72px 72px;mask-image:linear-gradient(to right,transparent 0%,black 48%,black 100%)}
+        .industries-hero{position:relative;overflow:hidden;background:#06142f;color:#fff;padding:82px 0 88px}
+        .industries-hero-bg{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(5,18,43,.98) 0%,rgba(6,20,47,.94) 38%,rgba(7,23,49,.72) 67%,rgba(7,20,43,.7) 100%),url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2200&q=90');background-size:cover;background-position:center 58%;transform:scale(1.03)}
+        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.08),rgba(4,15,35,.34))}
+        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.22;mask-image:linear-gradient(to right,transparent 0%,black 45%,black 100%)}
         .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.18);filter:blur(60px)}
-        .industries-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:80px;align-items:end}
+        .industries-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
         .industries-hero .kicker{color:#ffb27d}
         .industries-hero h1{max-width:920px;margin:0;font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.06em;font-weight:900}
         .industries-hero h1 span{color:var(--orange)}
         .industries-hero-copy>p{max-width:730px;margin:27px 0 30px;color:#d9e4f4;font-size:17px;line-height:1.72}
         .industries-hero .btn{display:inline-flex;gap:12px;align-items:center}
-        .industries-hero-panel{border-left:1px solid rgba(255,255,255,.2);padding:10px 0 10px 28px;display:grid;align-content:end;gap:3px}
-        .industries-hero-panel strong{font-size:74px;line-height:.9;color:#fff;letter-spacing:-.06em}
+        .industries-hero-panel{border-left:1px solid rgba(255,255,255,.22);padding:10px 0 10px 28px;display:grid;align-content:end;gap:5px;background:linear-gradient(90deg,rgba(6,20,47,.08),rgba(6,20,47,.25));backdrop-filter:blur(2px)}
+        .industries-hero-panel strong{font-size:clamp(38px,4.3vw,60px);line-height:.95;color:#fff;letter-spacing:-.045em;font-weight:900}
         .industries-hero-panel span{font-size:13px;color:#ffb27d;text-transform:uppercase;letter-spacing:.14em;font-weight:900}
-        .industries-hero-panel small{max-width:180px;margin-top:14px;color:#afc0d8;font-size:13px;line-height:1.5}
+        .industries-hero-panel small{max-width:180px;margin-top:10px;color:#c1cee0;font-size:13px;line-height:1.5}
         .industries-section{background:#f7f9fc;padding:82px 0 96px;border-top:1px solid var(--line)}
         .industries-heading{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:70px;align-items:end;margin-bottom:38px}
         .industries-heading h2{margin:0;max-width:760px;color:var(--navy);font-size:clamp(36px,4.8vw,58px);line-height:.98;letter-spacing:-.05em}
@@ -168,7 +171,7 @@ export default function IndustriesPage() {
         .industries-cta h2{position:relative;z-index:1;margin:0;color:#fff;font-size:clamp(30px,4vw,48px);letter-spacing:-.045em}
         .industries-cta .btn{position:relative;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:12px}
         @media(max-width:900px){.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}}
-        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
+        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-bg{background-position:58% center}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
       `}</style>
     </>
   );
