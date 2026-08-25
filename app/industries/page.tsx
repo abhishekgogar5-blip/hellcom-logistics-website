@@ -57,7 +57,7 @@ const industries = [
     title: "Quick Commerce",
     eyebrow: "Speed to Market",
     description: "Agile first-mile, middle-mile and last-mile logistics for rapid replenishment and high-frequency fulfilment.",
-    image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1400&q=85",
+    image: "https://images.unsplash.com/photo-1616401784845-ef125c59da2e?auto=format&fit=crop&w=1400&q=85",
   },
   {
     title: "Consolidators",
@@ -74,8 +74,8 @@ export default function IndustriesPage() {
         <div className="industries-hero-bg" aria-hidden="true">
           <img
             className="industries-hero-visual"
-            src="https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=1800&q=90"
-            alt="Industrial manufacturing and logistics"
+            src="/visuals/industries-hero-ai.svg"
+            alt="AI technology and logistics visual"
           />
           <div className="industries-hero-visual-shade" />
         </div>
