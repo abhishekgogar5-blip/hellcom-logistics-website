@@ -21,113 +21,29 @@ const stories: Story[] = [
 ];
 
 const heroStyles = `
-  .hero-story-copy {
-    align-self: center;
-    transform: translateY(-2vh);
-  }
-  .hero-story-copy-panel {
-    max-width: 700px;
-    padding: 20px 30px 22px 0;
-    border-radius: 0 22px 22px 0;
-    background: linear-gradient(90deg, rgba(5,18,43,.78) 0%, rgba(5,18,43,.60) 55%, rgba(5,18,43,.14) 88%, rgba(5,18,43,0) 100%);
-    text-shadow: 0 2px 14px rgba(0,0,0,.28);
-  }
-  .hero-story-copy-panel .hero-story-title {
-    font-size: clamp(48px, 5.25vw, 74px) !important;
-    line-height: .9 !important;
-    letter-spacing: -.045em !important;
-    margin: 14px 0 14px !important;
-    max-width: 680px;
-    text-shadow: 0 3px 18px rgba(0,0,0,.42);
-  }
+  .hero-story-copy { align-self: center; transform: translateY(-2vh); }
+  .hero-story-copy-panel { max-width: 700px; padding: 20px 30px 22px 0; border-radius: 0 22px 22px 0; background: linear-gradient(90deg, rgba(5,18,43,.78) 0%, rgba(5,18,43,.60) 55%, rgba(5,18,43,.14) 88%, rgba(5,18,43,0) 100%); text-shadow: 0 2px 14px rgba(0,0,0,.28); }
+  .hero-story-copy-panel .hero-story-title { font-size: clamp(48px, 5.25vw, 74px) !important; line-height: .9 !important; letter-spacing: -.045em !important; margin: 14px 0 14px !important; max-width: 680px; text-shadow: 0 3px 18px rgba(0,0,0,.42); }
   .hero-story-copy-panel .hero-story-title span { display: block; }
-  .hero-story-copy-panel .hero-story-description {
-    color: #fff;
-    font-size: clamp(14px, 1.05vw, 16px) !important;
-    line-height: 1.42 !important;
-    font-weight: 500;
-    max-width: 600px;
-    margin: 0 0 16px !important;
-    text-shadow: 0 2px 9px rgba(0,0,0,.62);
-  }
-  .hero-story-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 0 !important;
-  }
-  .hero-story-actions .btn {
-    white-space: nowrap;
-    padding: 12px 19px;
-  }
+  .hero-story-copy-panel .hero-story-description { color: #fff; font-size: clamp(14px, 1.05vw, 16px) !important; line-height: 1.42 !important; font-weight: 500; max-width: 600px; margin: 0 0 16px !important; text-shadow: 0 2px 9px rgba(0,0,0,.62); }
+  .hero-story-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 0 !important; }
+  .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
   .hero-story-side { position: relative; }
-  .hero-story-brand-line {
-    background: rgba(5,18,43,.72);
-    border: 1px solid rgba(255,255,255,.22);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 14px 36px rgba(0,0,0,.22);
-    padding: 10px 14px;
-    border-radius: 14px;
-    min-width: 205px;
-  }
+  .hero-story-brand-line { background: rgba(5,18,43,.72); border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 14px 36px rgba(0,0,0,.22); padding: 10px 14px; border-radius: 14px; min-width: 205px; }
+  .hero-story-progress { display: grid; gap: 10px; width: min(320px, 100%); margin-left: auto; }
+  .hero-story-progress-item { display: flex; align-items: center; min-height: 42px; padding: 0 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: rgba(5,18,43,.58); color: rgba(255,255,255,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all .25s ease; }
+  .hero-story-progress-item.active { background: rgba(255,255,255,.94); color: #07152f; border-color: rgba(255,255,255,.9); box-shadow: 0 10px 28px rgba(0,0,0,.16); }
+  .hero-story-progress-item span { font-size: 12px; font-weight: 800; letter-spacing: .04em; }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
-
-  /* Continuous hero video: the video plays behind the scroll-driven service copy. */
-  .hero-story-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 1;
-    pointer-events: none;
-    background: #05122b;
-  }
-  .hero-story-video-fallback {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-size: cover;
-    background-position: center;
-  }
-  .hero-story-video-shade {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: rgba(5,18,43,.24);
-    pointer-events: none;
-  }
-  .hero-story-vignette {
-    z-index: 3;
-    background:
-      linear-gradient(90deg, rgba(5,18,43,.70) 0%, rgba(5,18,43,.48) 28%, rgba(5,18,43,.08) 65%, rgba(5,18,43,.18) 100%),
-      linear-gradient(0deg, rgba(5,18,43,.34) 0%, transparent 48%, rgba(5,18,43,.08) 100%);
-  }
-  .hero-story-grid,
-  .hero-story-orange-glow { z-index: 4; }
-  .hero-story-content,
-  .hero-story-bottom { position: relative; z-index: 5; }
+  .hero-story-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; pointer-events: none; background: #05122b; }
+  .hero-story-video-fallback { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center; }
+  .hero-story-video-shade { position: absolute; inset: 0; z-index: 2; background: rgba(5,18,43,.24); pointer-events: none; }
+  .hero-story-vignette { z-index: 3; background: linear-gradient(90deg, rgba(5,18,43,.70) 0%, rgba(5,18,43,.48) 28%, rgba(5,18,43,.08) 65%, rgba(5,18,43,.18) 100%), linear-gradient(0deg, rgba(5,18,43,.34) 0%, transparent 48%, rgba(5,18,43,.08) 100%); }
+  .hero-story-grid, .hero-story-orange-glow { z-index: 4; }
+  .hero-story-content, .hero-story-bottom { position: relative; z-index: 5; }
   .hero-story-bottom { padding-bottom: 10px; }
-
-  @media (max-width: 1100px) {
-    .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; }
-    .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; }
-  }
-  @media (max-width: 900px) {
-    .hero-story-content { grid-template-columns: 1fr; gap: 0; }
-    .hero-story-copy { padding-top: 0; transform: translateY(-1vh); }
-    .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); }
-    .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; }
-    .hero-story-description { font-size: 14px !important; }
-    .hero-story-actions .btn { padding: 11px 16px; }
-    .hero-story-side { display: none; }
-    .hero-story-bottom { padding-bottom: 8px; }
-    .hero-story-video { object-position: center center; }
-    .hero-story-video-shade { background: rgba(5,18,43,.30); }
-  }
+  @media (max-width: 1100px) { .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; } }
+  @media (max-width: 900px) { .hero-story-content { grid-template-columns: 1fr; gap: 0; } .hero-story-copy { padding-top: 0; transform: translateY(-1vh); } .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); } .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; } .hero-story-description { font-size: 14px !important; } .hero-story-actions .btn { padding: 11px 16px; } .hero-story-side { display: none; } .hero-story-bottom { padding-bottom: 8px; } .hero-story-video { object-position: center center; } .hero-story-video-shade { background: rgba(5,18,43,.30); } }
 `;
 
 export default function HeroScrollStory() {
@@ -139,25 +55,15 @@ export default function HeroScrollStory() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
     video.muted = true;
     video.defaultMuted = true;
     video.loop = true;
     video.playsInline = true;
-
-    const playVideo = () => {
-      const promise = video.play();
-      if (promise !== undefined) promise.catch(() => undefined);
-    };
-
+    const playVideo = () => { const promise = video.play(); if (promise !== undefined) promise.catch(() => undefined); };
     playVideo();
     video.addEventListener("loadeddata", playVideo);
     document.addEventListener("visibilitychange", playVideo);
-
-    return () => {
-      video.removeEventListener("loadeddata", playVideo);
-      document.removeEventListener("visibilitychange", playVideo);
-    };
+    return () => { video.removeEventListener("loadeddata", playVideo); document.removeEventListener("visibilitychange", playVideo); };
   }, []);
 
   useEffect(() => {
@@ -165,7 +71,6 @@ export default function HeroScrollStory() {
     if (!section) return;
     let frame = 0;
     let lastIndex = -1;
-
     const update = () => {
       frame = 0;
       const rect = section.getBoundingClientRect();
@@ -173,7 +78,6 @@ export default function HeroScrollStory() {
       const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
       const exact = progress * (stories.length - 1);
       const index = Math.min(Math.max(Math.round(exact), 0), stories.length - 1);
-
       imageRefs.current.forEach((el, i) => {
         if (!el) return;
         const distance = Math.abs(exact - i);
@@ -184,23 +88,14 @@ export default function HeroScrollStory() {
         el.style.transform = `scale(${scale}) translate3d(${shift}%, 0, 0)`;
         el.style.zIndex = String(20 - Math.round(distance * 10));
       });
-
-      if (index !== lastIndex) {
-        lastIndex = index;
-        setActive(index);
-      }
+      if (index !== lastIndex) { lastIndex = index; setActive(index); }
       section.style.setProperty("--story-progress", progress.toFixed(4));
     };
-
     const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => { if (frame) window.cancelAnimationFrame(frame); window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); };
   }, []);
 
   const current = stories[active];
@@ -210,21 +105,8 @@ export default function HeroScrollStory() {
       <style>{heroStyles}</style>
       <div className="hero-story-sticky">
         <div className="hero-story-media" aria-hidden="true">
-          <div
-            className="hero-story-video-fallback"
-            style={{ backgroundImage: `url(${stories[0].image})` }}
-          />
-          <video
-            ref={videoRef}
-            className="hero-story-video"
-            src="/Videos/hellcom-hero.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-          />
+          <div className="hero-story-video-fallback" style={{ backgroundImage: `url(${stories[0].image})` }} />
+          <video ref={videoRef} className="hero-story-video" src="/Videos/hellcom-hero.mp4" autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
           <div className="hero-story-video-shade" />
           <div className="hero-story-vignette" />
           <div className="hero-story-grid" />
@@ -234,30 +116,24 @@ export default function HeroScrollStory() {
         <div className="container hero-story-content">
           <div className="hero-story-copy">
             <div className="hero-story-copy-panel">
-              <h1 key={current.number} className="hero-story-title">
-                {current.title.split("\n").map((line) => <span key={line}>{line}</span>)}
-              </h1>
+              <h1 key={current.number} className="hero-story-title">{current.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
               <p key={`desc-${current.number}`} className="hero-story-description">{current.description}</p>
-              <div className="hero-story-actions">
-                <Link href="/quote" className="btn btn-primary">Get a Quote</Link>
-                <Link href="/services" className="btn btn-story-light">Explore Services</Link>
-              </div>
+              <div className="hero-story-actions"><Link href="/quote" className="btn btn-primary">Get a Quote</Link><Link href="/services" className="btn btn-story-light">Explore Services</Link></div>
             </div>
           </div>
 
           <div className="hero-story-side">
-            <div className="hero-story-brand-line">
-              <span>HELLCOM LOGISTICS</span>
-              <span>MOVE WITH TRUST.</span>
+            <div className="hero-story-progress" aria-label="Hero services">
+              {stories.map((story, index) => (
+                <div key={story.number} className={`hero-story-progress-item${index === active ? " active" : ""}`}>
+                  <span>{story.eyebrow}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="hero-story-bottom">
-          <div className="container">
-            <span className="hero-story-scroll-line" /><span>Scroll to explore</span><span className="hero-story-scroll-arrow">↓</span>
-          </div>
-        </div>
+        <div className="hero-story-bottom"><div className="container"><span className="hero-story-scroll-line" /><span>Scroll to explore</span><span className="hero-story-scroll-arrow">↓</span></div></div>
       </div>
     </section>
   );
