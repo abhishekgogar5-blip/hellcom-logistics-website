@@ -45,7 +45,7 @@ const industries = [
     title: "FMCG",
     eyebrow: "Consumer Distribution",
     description: "High-frequency distribution solutions built for speed, availability and consistent service across markets.",
-    image: "https://images.unsplash.com/photo-1601598851547-4302969d6f9c?auto=format&fit=crop&w=1400&q=85",
+    image: "https://orangeharvest.nl/images/hero_fmcg_professional.png",
   },
   {
     title: "Data Centers",
