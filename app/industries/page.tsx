@@ -71,7 +71,15 @@ export default function IndustriesPage() {
   return (
     <>
       <section className="industries-hero">
-        <div className="industries-hero-bg" aria-hidden="true" />
+        <div className="industries-hero-bg" aria-hidden="true">
+          <img
+            className="industries-hero-visual"
+            src="https://media.bitcot.com/wp-content/uploads/2025/07/Fastest-Growing-Industries-USA.webp"
+            alt=""
+            referrerPolicy="no-referrer"
+          />
+          <div className="industries-hero-visual-shade" />
+        </div>
         <div className="industries-hero-glow" />
         <div className="container industries-hero-inner">
           <div className="industries-hero-copy">
@@ -130,11 +138,13 @@ export default function IndustriesPage() {
 
       <style>{`
         .industries-hero{position:relative;overflow:hidden;background:#06142f;color:#fff;padding:82px 0 88px}
-        .industries-hero-bg{position:absolute;inset:0;background-color:#06142f;background-image:linear-gradient(90deg,rgba(5,18,43,.99) 0%,rgba(6,20,47,.96) 34%,rgba(6,20,47,.55) 62%,rgba(6,20,47,.18) 100%),url('https://media.bitcot.com/wp-content/uploads/2025/07/Fastest-Growing-Industries-USA.webp'),url('https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=2200&q=85');background-repeat:no-repeat;background-size:100% 100%,58% auto,58% auto;background-position:center,right center,right center;transform:scale(1.02)}
-        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.04),rgba(4,15,35,.34))}
-        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.12;mask-image:linear-gradient(to right,transparent 0%,black 45%,black 100%)}
-        .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.16);filter:blur(60px)}
-        .industries-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
+        .industries-hero-bg{position:absolute;inset:0;background:#06142f;overflow:hidden}
+        .industries-hero-visual{position:absolute;top:0;right:0;width:57%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.96}
+        .industries-hero-visual-shade{position:absolute;inset:0;background:linear-gradient(90deg,#06142f 0%,rgba(6,20,47,.98) 25%,rgba(6,20,47,.72) 47%,rgba(6,20,47,.18) 72%,rgba(6,20,47,.04) 100%),linear-gradient(180deg,rgba(6,20,47,.12),rgba(6,20,47,.36))}
+        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.1;mask-image:linear-gradient(to right,transparent 0%,black 48%,black 100%)}
+        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.02),rgba(4,15,35,.24));pointer-events:none;z-index:0}
+        .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.16);filter:blur(60px);z-index:1}
+        .industries-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
         .industries-hero .kicker{color:#ffb27d}
         .industries-hero h1{max-width:920px;margin:0;font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.06em;font-weight:900}
         .industries-hero h1 span{color:var(--orange)}
@@ -170,8 +180,8 @@ export default function IndustriesPage() {
         .industries-cta .kicker{color:#ffb27d}
         .industries-cta h2{position:relative;z-index:1;margin:0;color:#fff;font-size:clamp(30px,4vw,48px);letter-spacing:-.045em}
         .industries-cta .btn{position:relative;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:12px}
-        @media(max-width:900px){.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}}
-        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-bg{background-size:100% 100%,82% auto,82% auto;background-position:center,right center,right center}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
+        @media(max-width:900px){.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}.industries-hero-visual{width:68%;opacity:.78}.industries-hero-visual-shade{background:linear-gradient(90deg,#06142f 0%,rgba(6,20,47,.98) 34%,rgba(6,20,47,.66) 66%,rgba(6,20,47,.22) 100%),linear-gradient(180deg,rgba(6,20,47,.12),rgba(6,20,47,.42))}}
+        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-visual{width:100%;height:48%;top:auto;bottom:0;opacity:.4;object-position:center}.industries-hero-visual-shade{background:linear-gradient(180deg,#06142f 0%,rgba(6,20,47,.96) 42%,rgba(6,20,47,.62) 100%)}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
       `}</style>
     </>
   );
