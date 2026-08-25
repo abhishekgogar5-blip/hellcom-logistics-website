@@ -28,12 +28,16 @@ const heroStyles = `
   .hero-story-copy-panel .hero-story-description { color: #fff; font-size: clamp(14px, 1.05vw, 16px) !important; line-height: 1.42 !important; font-weight: 500; max-width: 600px; margin: 0 0 16px !important; text-shadow: 0 2px 9px rgba(0,0,0,.62); }
   .hero-story-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 0 !important; }
   .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
-  .hero-story-side { position: absolute; right: 0; bottom: 58px; width: 220px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; padding: 0; }
+
+  /* Original lower-right service navigator: compact, line-led and number-free. */
+  .hero-story-side { position: absolute; right: 24px; bottom: 0; width: min(465px, calc(100% - 48px)); height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 24px 26px 27px; background: rgba(5,18,43,.88); border: 1px solid rgba(255,255,255,.18); border-bottom: 0; border-radius: 28px 28px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,.16); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
   .hero-story-brand-line { display: none; }
-  .hero-story-progress { display: grid; gap: 9px; width: 210px; margin-left: auto; }
-  .hero-story-progress-item { display: flex; align-items: center; min-height: 34px; padding: 0 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; background: rgba(5,18,43,.52); color: rgba(255,255,255,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all .25s ease; }
-  .hero-story-progress-item.active { background: rgba(255,255,255,.94); color: #07152f; border-color: rgba(255,255,255,.9); box-shadow: 0 8px 22px rgba(0,0,0,.14); }
-  .hero-story-progress-item span { font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+  .hero-story-progress { display: grid; gap: 0; width: 100%; margin: 0; }
+  .hero-story-progress-item { display: grid; grid-template-columns: 98px minmax(0,1fr); align-items: center; gap: 14px; min-height: 52px; padding: 0; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.48); backdrop-filter: none; -webkit-backdrop-filter: none; transition: color .25s ease; }
+  .hero-story-progress-item span { position: relative; display: block; font-size: 15px; line-height: 1.15; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: inherit; }
+  .hero-story-progress-item span::before { content: ""; display: block; width: 98px; height: 2px; margin-bottom: 0; background: rgba(255,255,255,.28); transition: background .25s ease; }
+  .hero-story-progress-item.active { background: transparent; color: #ffb27d; border: 0; box-shadow: none; }
+  .hero-story-progress-item.active span::before { background: var(--orange); }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
   .hero-story-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; pointer-events: none; background: #05122b; }
   .hero-story-video-fallback { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center; }
@@ -42,7 +46,7 @@ const heroStyles = `
   .hero-story-grid, .hero-story-orange-glow { z-index: 4; }
   .hero-story-content, .hero-story-bottom { position: relative; z-index: 5; }
   .hero-story-bottom { padding-bottom: 10px; }
-  @media (max-width: 1100px) { .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; } }
+  @media (max-width: 1100px) { .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; } .hero-story-side { right: 18px; width: min(430px, calc(100% - 36px)); } }
   @media (max-width: 900px) { .hero-story-content { grid-template-columns: 1fr; gap: 0; } .hero-story-copy { padding-top: 0; transform: translateY(-1vh); } .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); } .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; } .hero-story-description { font-size: 14px !important; } .hero-story-actions .btn { padding: 11px 16px; } .hero-story-side { display: none; } .hero-story-bottom { padding-bottom: 8px; } .hero-story-video { object-position: center center; } .hero-story-video-shade { background: rgba(5,18,43,.30); } }
 `;
 
@@ -137,4 +141,4 @@ export default function HeroScrollStory() {
       </div>
     </section>
   );
-}
+}` }
