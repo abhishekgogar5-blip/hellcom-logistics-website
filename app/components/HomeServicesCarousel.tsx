@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
 
 type Service = readonly [string, string, string, string];
@@ -16,7 +16,7 @@ export default function HomeServicesCarousel({ services }: HomeServicesCarouselP
   const startXRef = useRef(0);
   const startScrollLeftRef = useRef(0);
 
-  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     const track = trackRef.current;
     if (!track) return;
 
@@ -27,7 +27,7 @@ export default function HomeServicesCarousel({ services }: HomeServicesCarouselP
     track.style.cursor = "grabbing";
   };
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     const track = trackRef.current;
     if (!track || !draggingRef.current) return;
 
@@ -42,7 +42,7 @@ export default function HomeServicesCarousel({ services }: HomeServicesCarouselP
     if (track) track.style.cursor = "grab";
   };
 
-  const preventClickAfterDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  const preventClickAfterDrag = (event: MouseEvent<HTMLDivElement>) => {
     if (movedRef.current) {
       event.preventDefault();
       event.stopPropagation();
