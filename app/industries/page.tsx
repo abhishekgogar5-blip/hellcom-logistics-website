@@ -74,7 +74,7 @@ export default function IndustriesPage() {
         <div className="industries-hero-bg" aria-hidden="true">
           <img
             className="industries-hero-visual"
-            src="/visuals/industries-hero-ai.svg"
+            src="/visuals/industries-hero-user.jpg"
             alt="AI technology and logistics visual"
           />
           <div className="industries-hero-visual-shade" />
