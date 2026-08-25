@@ -74,8 +74,8 @@ export default function IndustriesPage() {
         <div className="industries-hero-bg" aria-hidden="true">
           <img
             className="industries-hero-visual"
-            src="/visuals/industries-hero-user.jpg"
-            alt="AI technology and logistics visual"
+            src="https://media.giphy.com/media/GJ7ZFaZgwDvGs31vRC/giphy.gif"
+            alt="Animated global logistics and shipping visual"
           />
           <div className="industries-hero-visual-shade" />
         </div>
