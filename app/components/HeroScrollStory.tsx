@@ -62,18 +62,16 @@ const heroStyles = `
     padding: 12px 19px;
   }
   .hero-story-side { position: relative; }
-  .hero-story-brand-line,
-  .hero-story-progress {
+  .hero-story-brand-line {
     background: rgba(5,18,43,.72);
     border: 1px solid rgba(255,255,255,.22);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 14px 36px rgba(0,0,0,.22);
+    padding: 10px 14px;
+    border-radius: 14px;
+    min-width: 205px;
   }
-  .hero-story-brand-line { padding: 10px 14px; border-radius: 14px; min-width: 205px; }
-  .hero-story-progress { width: min(370px, 100%); padding: 16px 18px; border-radius: 18px; gap: 12px; }
-  .hero-story-progress-item { grid-template-columns: 32px minmax(24px, 1fr) minmax(0, 215px); gap: 10px; min-height: 20px; font-size: 10px; }
-  .hero-story-progress-item strong { overflow: visible; text-overflow: clip; white-space: normal; line-height: 1.2; }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
 
   /* Continuous hero video: the video plays behind the scroll-driven service copy. */
@@ -116,8 +114,6 @@ const heroStyles = `
 
   @media (max-width: 1100px) {
     .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; }
-    .hero-story-progress { width: 285px; }
-    .hero-story-progress-item { grid-template-columns: 28px 24px minmax(0, 1fr); }
     .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; }
   }
   @media (max-width: 900px) {
@@ -238,10 +234,6 @@ export default function HeroScrollStory() {
         <div className="container hero-story-content">
           <div className="hero-story-copy">
             <div className="hero-story-copy-panel">
-              <div className="hero-story-kicker">
-                <span className="hero-story-number">{current.number}</span>
-                <span>{current.eyebrow}</span>
-              </div>
               <h1 key={current.number} className="hero-story-title">
                 {current.title.split("\n").map((line) => <span key={line}>{line}</span>)}
               </h1>
@@ -257,13 +249,6 @@ export default function HeroScrollStory() {
             <div className="hero-story-brand-line">
               <span>HELLCOM LOGISTICS</span>
               <span>MOVE WITH TRUST.</span>
-            </div>
-            <div className="hero-story-progress" aria-label="Hero services">
-              {stories.map((story, i) => (
-                <div className={`hero-story-progress-item ${i === active ? "is-active" : ""}`} key={story.number}>
-                  <span>{story.number}</span><i /><strong>{story.eyebrow}</strong>
-                </div>
-              ))}
             </div>
           </div>
         </div>
