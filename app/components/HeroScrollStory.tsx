@@ -29,7 +29,9 @@ const heroStyles = `
   .hero-story-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 0 !important; }
   .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
   .hero-story-side { position: absolute; right: 0; bottom: 30px; width: 360px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0; }
-  .hero-story-brand-line { display: none; }
+  .hero-story-brand-line { display: block; position: absolute; right: 0; top: 30px; width: 250px; padding: 13px 18px 14px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: rgba(5,18,43,.56); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); text-align: center; z-index: 6; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+  .hero-story-brand-line strong { display: block; color: #fff; font-size: 13px; line-height: 1.1; font-weight: 900; letter-spacing: .14em; }
+  .hero-story-brand-line span { display: block; margin-top: 7px; color: #ff9a5a; font-size: 11px; line-height: 1.1; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
   .hero-story-progress { display: grid; gap: 0; width: 100%; margin-left: auto; padding: 14px 0 6px; background: rgba(5,18,43,.78); border: 1px solid rgba(255,255,255,.22); border-bottom: 0; border-radius: 24px 24px 0 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: hidden; }
   .hero-story-progress-item { position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 18px 0 108px; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.52); transition: color .25s ease; }
   .hero-story-progress-item:before { content: ""; position: absolute; left: 18px; top: 50%; width: 76px; height: 2px; transform: translateY(-50%); background: rgba(255,255,255,.28); transition: background .25s ease; }
@@ -44,8 +46,8 @@ const heroStyles = `
   .hero-story-grid, .hero-story-orange-glow { z-index: 4; }
   .hero-story-content, .hero-story-bottom { position: relative; z-index: 5; }
   .hero-story-bottom { padding-bottom: 10px; }
-  @media (max-width: 1100px) { .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; } }
-  @media (max-width: 900px) { .hero-story-content { grid-template-columns: 1fr; gap: 0; } .hero-story-copy { padding-top: 0; transform: translateY(-1vh); } .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); } .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; } .hero-story-description { font-size: 14px !important; } .hero-story-actions .btn { padding: 11px 16px; } .hero-story-side { display: none; } .hero-story-bottom { padding-bottom: 8px; } .hero-story-video { object-position: center center; } .hero-story-video-shade { background: rgba(5,18,43,.30); } }
+  @media (max-width: 1100px) { .hero-story-content { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .hero-story-copy-panel .hero-story-title { font-size: clamp(46px, 5.3vw, 68px) !important; } .hero-story-brand-line { width: 220px; } }
+  @media (max-width: 900px) { .hero-story-content { grid-template-columns: 1fr; gap: 0; } .hero-story-copy { padding-top: 0; transform: translateY(-1vh); } .hero-story-copy-panel { max-width: 100%; padding: 18px 18px 20px; border-radius: 16px; background: rgba(5,18,43,.68); } .hero-story-copy-panel .hero-story-title { font-size: clamp(40px, 10vw, 58px) !important; line-height: .92 !important; margin: 12px 0 14px !important; } .hero-story-description { font-size: 14px !important; } .hero-story-actions .btn { padding: 11px 16px; } .hero-story-side { display: none; } .hero-story-brand-line { display: none; } .hero-story-bottom { padding-bottom: 8px; } .hero-story-video { object-position: center center; } .hero-story-video-shade { background: rgba(5,18,43,.30); } }
 `;
 
 export default function HeroScrollStory() {
@@ -122,6 +124,11 @@ export default function HeroScrollStory() {
               <p key={`desc-${current.number}`} className="hero-story-description">{current.description}</p>
               <div className="hero-story-actions"><Link href="/quote" className="btn btn-primary">Get a Quote</Link><Link href="/services" className="btn btn-story-light">Explore Services</Link></div>
             </div>
+          </div>
+
+          <div className="hero-story-brand-line" aria-label="HELLCOM Logistics brand message">
+            <strong>HELLCOM LOGISTICS</strong>
+            <span>MOVE WITH TRUST</span>
           </div>
 
           <div className="hero-story-side">
