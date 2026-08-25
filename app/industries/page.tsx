@@ -130,10 +130,10 @@ export default function IndustriesPage() {
 
       <style>{`
         .industries-hero{position:relative;overflow:hidden;background:#06142f;color:#fff;padding:82px 0 88px}
-        .industries-hero-bg{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(5,18,43,.97) 0%,rgba(6,20,47,.91) 38%,rgba(7,23,49,.68) 67%,rgba(7,20,43,.58) 100%),url('https://media.giphy.com/media/kukgtxswC3FEnHpIXc/giphy.gif');background-size:cover;background-position:center;transform:scale(1.02)}
-        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.06),rgba(4,15,35,.38))}
-        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.18;mask-image:linear-gradient(to right,transparent 0%,black 45%,black 100%)}
-        .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.18);filter:blur(60px)}
+        .industries-hero-bg{position:absolute;inset:0;background-color:#06142f;background-image:linear-gradient(90deg,rgba(5,18,43,.99) 0%,rgba(6,20,47,.96) 34%,rgba(6,20,47,.55) 62%,rgba(6,20,47,.18) 100%),url('https://media.bitcot.com/wp-content/uploads/2025/07/Fastest-Growing-Industries-USA.webp');background-repeat:no-repeat;background-size:100% 100%,58% auto;background-position:center,right center;transform:scale(1.02)}
+        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.04),rgba(4,15,35,.34))}
+        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.12;mask-image:linear-gradient(to right,transparent 0%,black 45%,black 100%)}
+        .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.16);filter:blur(60px)}
         .industries-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
         .industries-hero .kicker{color:#ffb27d}
         .industries-hero h1{max-width:920px;margin:0;font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.06em;font-weight:900}
@@ -171,7 +171,7 @@ export default function IndustriesPage() {
         .industries-cta h2{position:relative;z-index:1;margin:0;color:#fff;font-size:clamp(30px,4vw,48px);letter-spacing:-.045em}
         .industries-cta .btn{position:relative;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:12px}
         @media(max-width:900px){.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}}
-        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-bg{background-position:center}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
+        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-bg{background-size:100% 100%,82% auto;background-position:center,right center}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
       `}</style>
     </>
   );
