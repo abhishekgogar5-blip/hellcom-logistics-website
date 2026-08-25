@@ -55,6 +55,20 @@ export default function ServicesPage() {
   return (
     <>
       <section className="services-hero">
+        <div className="services-hero-graphic" aria-hidden="true">
+          <div className="route route-one"><span /></div>
+          <div className="route route-two"><span /></div>
+          <div className="route route-three"><span /></div>
+          <div className="graphic-node node-one" />
+          <div className="graphic-node node-two" />
+          <div className="graphic-node node-three" />
+          <div className="graphic-node node-four" />
+          <div className="graphic-ring ring-one" />
+          <div className="graphic-ring ring-two" />
+          <div className="graphic-label label-one">AIR</div>
+          <div className="graphic-label label-two">SEA</div>
+          <div className="graphic-label label-three">ROAD</div>
+        </div>
         <div className="container services-hero-grid">
           <div>
             <div className="kicker">Our Services</div>
@@ -113,6 +127,22 @@ export default function ServicesPage() {
       <style>{`
         .services-hero{background:linear-gradient(135deg,#07152f 0%,#0b1d40 62%,#132b59 100%);color:#fff;padding:78px 0 82px;overflow:hidden;position:relative}
         .services-hero:after{content:"";position:absolute;width:420px;height:420px;right:4%;top:-180px;border-radius:50%;background:rgba(255,106,0,.15);filter:blur(70px)}
+        .services-hero-graphic{position:absolute;inset:0;pointer-events:none;opacity:.82;overflow:hidden}
+        .services-hero-graphic:before{content:"";position:absolute;inset:-20%;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;transform:perspective(700px) rotateX(58deg) scale(1.35);transform-origin:center bottom;opacity:.5}
+        .route{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),rgba(255,106,0,.7),transparent);transform-origin:left center}
+        .route span{position:absolute;left:0;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 16px rgba(255,106,0,.8);animation:heroTravel 4.8s linear infinite}
+        .route-one{width:620px;right:-20px;top:34%;transform:rotate(-18deg)}
+        .route-two{width:520px;right:7%;top:58%;transform:rotate(12deg);opacity:.65}
+        .route-three{width:470px;right:15%;top:76%;transform:rotate(-7deg);opacity:.5}
+        .route-two span{animation-delay:1.5s}.route-three span{animation-delay:2.8s}
+        .graphic-node{position:absolute;width:10px;height:10px;border:2px solid rgba(255,255,255,.65);border-radius:50%;box-shadow:0 0 0 7px rgba(255,255,255,.025)}
+        .node-one{right:34%;top:22%}.node-two{right:13%;top:41%}.node-three{right:38%;top:64%}.node-four{right:7%;top:78%}
+        .graphic-ring{position:absolute;border:1px solid rgba(255,106,0,.16);border-radius:50%;animation:heroPulse 4s ease-in-out infinite}
+        .ring-one{width:280px;height:280px;right:9%;top:4%}.ring-two{width:150px;height:150px;right:30%;top:53%;animation-delay:1.5s}
+        .graphic-label{position:absolute;color:rgba(255,255,255,.22);font-size:10px;font-weight:900;letter-spacing:.2em;border:1px solid rgba(255,255,255,.09);padding:7px 10px;border-radius:999px;backdrop-filter:blur(5px)}
+        .label-one{right:22%;top:25%}.label-two{right:7%;top:54%}.label-three{right:39%;top:78%}
+        @keyframes heroTravel{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+        @keyframes heroPulse{0%,100%{transform:scale(.94);opacity:.45}50%{transform:scale(1.04);opacity:1}}
         .services-hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:70px;align-items:end;position:relative;z-index:1}
         .services-hero .kicker{color:#ffb27d}
         .services-hero h1{margin:0;max-width:800px;font-size:clamp(46px,6.5vw,78px);line-height:.94;letter-spacing:-.055em;font-weight:900}
@@ -141,8 +171,8 @@ export default function ServicesPage() {
         .capability-item{display:flex;gap:9px;align-items:flex-start;color:#465b73;font-size:13px;line-height:1.45}
         .capability-item span{color:var(--orange);font-weight:900;font-size:16px;line-height:1}
         .service-quote-btn{margin-top:27px;width:max-content}
-        @media(max-width:900px){.services-hero-grid{grid-template-columns:1fr;gap:30px}.services-hero-note{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:20px 0 0}.service-detail{grid-template-columns:1fr}.service-detail-media{min-height:300px}.service-detail-content{padding:32px}.capability-list{grid-template-columns:1fr 1fr}}
-        @media(max-width:640px){.services-hero{padding:58px 0 62px}.services-hero h1{font-size:clamp(42px,13vw,62px)}.services-hero p{font-size:15px}.service-detail-media{min-height:230px}.service-detail-content{padding:27px 23px}.service-detail-content h3{font-size:29px}.capability-list{grid-template-columns:1fr}.service-quote-btn{width:100%}}
+        @media(max-width:900px){.services-hero-grid{grid-template-columns:1fr;gap:30px}.services-hero-note{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:20px 0 0}.service-detail{grid-template-columns:1fr}.service-detail-media{min-height:300px}.service-detail-content{padding:32px}.capability-list{grid-template-columns:1fr 1fr}.services-hero-graphic{opacity:.48}.route-one{width:440px;right:-150px}.route-two{width:380px;right:-100px}.route-three{width:330px;right:-80px}.label-one{right:10%;top:18%}.label-two{right:3%;top:45%}.label-three{right:18%;top:72%}}
+        @media(max-width:640px){.services-hero{padding:58px 0 62px}.services-hero h1{font-size:clamp(42px,13vw,62px)}.services-hero p{font-size:15px}.service-detail-media{min-height:230px}.service-detail-content{padding:27px 23px}.service-detail-content h3{font-size:29px}.capability-list{grid-template-columns:1fr}.service-quote-btn{width:100%}.services-hero-graphic{opacity:.25}.graphic-label{display:none}.ring-one{width:190px;height:190px;right:-70px}.ring-two{width:100px;height:100px;right:12%;top:70%}}
       `}</style>
     </>
   );
