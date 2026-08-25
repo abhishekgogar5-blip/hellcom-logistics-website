@@ -30,12 +30,12 @@ const heroStyles = `
   .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
   .hero-story-side { position: absolute; right: 0; bottom: 30px; width: 360px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0; }
   .hero-story-brand-line { display: none; }
-  .hero-story-progress { display: grid; gap: 0; width: 100%; margin-left: auto; padding: 18px 0 8px; background: rgba(5,18,43,.78); border: 1px solid rgba(255,255,255,.22); border-bottom: 0; border-radius: 24px 24px 0 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: hidden; }
-  .hero-story-progress-item { position: relative; display: flex; align-items: center; min-height: 52px; padding: 0 18px 0 126px; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.52); transition: color .25s ease; }
-  .hero-story-progress-item:before { content: ""; position: absolute; left: 18px; top: 50%; width: 88px; height: 2px; transform: translateY(-50%); background: rgba(255,255,255,.28); transition: background .25s ease; }
+  .hero-story-progress { display: grid; gap: 0; width: 100%; margin-left: auto; padding: 14px 0 6px; background: rgba(5,18,43,.78); border: 1px solid rgba(255,255,255,.22); border-bottom: 0; border-radius: 24px 24px 0 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: hidden; }
+  .hero-story-progress-item { position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 18px 0 108px; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.52); transition: color .25s ease; }
+  .hero-story-progress-item:before { content: ""; position: absolute; left: 18px; top: 50%; width: 76px; height: 2px; transform: translateY(-50%); background: rgba(255,255,255,.28); transition: background .25s ease; }
   .hero-story-progress-item.active { background: transparent; color: #ff9a5a; border: 0; box-shadow: none; }
   .hero-story-progress-item.active:before { background: #ff6a00; }
-  .hero-story-progress-item span { font-size: 13px; line-height: 1.15; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  .hero-story-progress-item span { font-size: 11px; line-height: 1.15; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
   .hero-story-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; pointer-events: none; background: #05122b; }
   .hero-story-video-fallback { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center; }
