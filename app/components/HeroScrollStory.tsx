@@ -28,11 +28,11 @@ const heroStyles = `
   .hero-story-copy-panel .hero-story-description { color: #fff; font-size: clamp(14px, 1.05vw, 16px) !important; line-height: 1.42 !important; font-weight: 500; max-width: 600px; margin: 0 0 16px !important; text-shadow: 0 2px 9px rgba(0,0,0,.62); }
   .hero-story-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 0 !important; }
   .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
-  .hero-story-side { position: absolute; right: 0; bottom: 30px; width: 360px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0 0 0 24px; }
+  .hero-story-side { position: absolute; right: 0; bottom: 30px; width: 360px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; padding: 0; }
   .hero-story-brand-line { display: none; }
-  .hero-story-progress { display: grid; gap: 0; width: 100%; margin-left: auto; padding: 16px 0 0 0; background: rgba(5,18,43,.72); border: 1px solid rgba(255,255,255,.22); border-bottom: 0; border-radius: 26px 26px 0 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: hidden; }
-  .hero-story-progress-item { position: relative; display: flex; align-items: center; min-height: 52px; padding: 0 18px 0 112px; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.52); transition: color .25s ease; }
-  .hero-story-progress-item:before { content: ""; position: absolute; left: 18px; top: 50%; width: 98px; height: 2px; transform: translateY(-50%); background: rgba(255,255,255,.28); transition: background .25s ease; }
+  .hero-story-progress { display: grid; gap: 0; width: 100%; margin-left: auto; padding: 18px 0 8px; background: rgba(5,18,43,.78); border: 1px solid rgba(255,255,255,.22); border-bottom: 0; border-radius: 24px 24px 0 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: hidden; }
+  .hero-story-progress-item { position: relative; display: flex; align-items: center; min-height: 52px; padding: 0 18px 0 126px; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.52); transition: color .25s ease; }
+  .hero-story-progress-item:before { content: ""; position: absolute; left: 18px; top: 50%; width: 88px; height: 2px; transform: translateY(-50%); background: rgba(255,255,255,.28); transition: background .25s ease; }
   .hero-story-progress-item.active { background: transparent; color: #ff9a5a; border: 0; box-shadow: none; }
   .hero-story-progress-item.active:before { background: #ff6a00; }
   .hero-story-progress-item span { font-size: 13px; line-height: 1.15; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
