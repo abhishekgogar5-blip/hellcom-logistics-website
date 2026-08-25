@@ -74,9 +74,8 @@ export default function IndustriesPage() {
         <div className="industries-hero-bg" aria-hidden="true">
           <img
             className="industries-hero-visual"
-            src="https://media.bitcot.com/wp-content/uploads/2025/07/Fastest-Growing-Industries-USA.webp"
-            alt=""
-            referrerPolicy="no-referrer"
+            src="https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=1800&q=90"
+            alt="Industrial manufacturing and logistics"
           />
           <div className="industries-hero-visual-shade" />
         </div>
