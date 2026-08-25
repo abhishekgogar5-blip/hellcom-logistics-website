@@ -28,12 +28,12 @@ const heroStyles = `
   .hero-story-copy-panel .hero-story-description { color: #fff; font-size: clamp(14px, 1.05vw, 16px) !important; line-height: 1.42 !important; font-weight: 500; max-width: 600px; margin: 0 0 16px !important; text-shadow: 0 2px 9px rgba(0,0,0,.62); }
   .hero-story-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 0 !important; }
   .hero-story-actions .btn { white-space: nowrap; padding: 12px 19px; }
-  .hero-story-side { position: relative; }
-  .hero-story-brand-line { background: rgba(5,18,43,.72); border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 14px 36px rgba(0,0,0,.22); padding: 10px 14px; border-radius: 14px; min-width: 205px; }
-  .hero-story-progress { display: grid; gap: 10px; width: min(320px, 100%); margin-left: auto; }
-  .hero-story-progress-item { display: flex; align-items: center; min-height: 42px; padding: 0 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: rgba(5,18,43,.58); color: rgba(255,255,255,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all .25s ease; }
-  .hero-story-progress-item.active { background: rgba(255,255,255,.94); color: #07152f; border-color: rgba(255,255,255,.9); box-shadow: 0 10px 28px rgba(0,0,0,.16); }
-  .hero-story-progress-item span { font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+  .hero-story-side { position: absolute; right: 0; bottom: 58px; width: 220px; height: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; padding: 0; }
+  .hero-story-brand-line { display: none; }
+  .hero-story-progress { display: grid; gap: 9px; width: 210px; margin-left: auto; }
+  .hero-story-progress-item { display: flex; align-items: center; min-height: 34px; padding: 0 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; background: rgba(5,18,43,.52); color: rgba(255,255,255,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all .25s ease; }
+  .hero-story-progress-item.active { background: rgba(255,255,255,.94); color: #07152f; border-color: rgba(255,255,255,.9); box-shadow: 0 8px 22px rgba(0,0,0,.14); }
+  .hero-story-progress-item span { font-size: 10px; font-weight: 800; letter-spacing: .04em; }
   .hero-story-image img { filter: saturate(1.03) contrast(1.03); }
   .hero-story-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; pointer-events: none; background: #05122b; }
   .hero-story-video-fallback { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center; }
