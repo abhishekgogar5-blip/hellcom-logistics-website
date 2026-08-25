@@ -13,7 +13,7 @@ const services = [
 ] as const;
 
 const industries = [
-  ["Manufacturing", "https://media0.giphy.com/media/Q9Jlf3f1qtBWs8Puxu/giphy.gif"],
+  ["Manufacturing", "https://media1.giphy.com/media/VFjuEAIor37m93M4iE/giphy.gif"],
   ["Automotive & Auto Components", "https://media1.giphy.com/media/XgXeYtdhTHsx6smbOx/giphy.gif"],
   ["Engineering", "https://media0.giphy.com/media/eg0nZjWdgz1zizjjPG/giphy.gif"],
   ["Electrical & Electronics", "https://media0.giphy.com/media/3o7aDfn4sN4G7mEKze/giphy.gif"],
@@ -100,9 +100,9 @@ export default function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="section-head"><div><div className="kicker">Industries</div><h2>Built for physical-product businesses.</h2></div><Link href="/industries" className="btn btn-secondary">Explore Industries</Link></div>
-          <div className="cards">{industries.map(([industry, gif], i) => <div className="card home-industry-card" key={industry}>
+          <div className="cards">{industries.map(([industry, gif]) => <div className="card home-industry-card" key={industry}>
             <div className="home-industry-media"><img src={gif} alt={`${industry} logistics`} loading="lazy" /></div>
-            <div className="icon">0{i+1}</div><h3>{industry}</h3><p>Transportation support aligned to recurring B2B movement.</p>
+            <h3>{industry}</h3><p>Transportation support aligned to recurring B2B movement.</p>
           </div>)}</div>
         </div>
       </section>
@@ -129,9 +129,7 @@ export default function Home() {
         .home-industry-card{overflow:hidden;padding:0 0 24px}
         .home-industry-media{height:155px;margin-bottom:22px;overflow:hidden;background:#0b1d40}
         .home-industry-media img{width:100%;height:100%;display:block;object-fit:cover}
-        .home-industry-card .icon,.home-industry-card h3,.home-industry-card p{margin-left:28px;margin-right:28px}
-        .home-industry-card .icon{display:flex;width:max-content;margin-top:0}
-        .home-industry-card h3{margin-top:0}
+        .home-industry-card h3,.home-industry-card p{margin-left:28px;margin-right:28px}
         @media(max-width:900px){.home-service-card{width:300px;flex-basis:300px}}
         @media(max-width:640px){.home-services-marquee{padding:8px 0 18px}.home-services-track{gap:16px;padding:0 20px}.home-service-card{width:285px;flex-basis:285px}.home-services-mobile-note{display:block}.home-industry-media{height:145px}}
         @media(prefers-reduced-motion:reduce){.home-services-track{scroll-behavior:auto}}
