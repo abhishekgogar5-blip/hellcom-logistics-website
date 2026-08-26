@@ -53,16 +53,20 @@ export default function AboutPage() {
 
       <section className="mission-section">
         <div className="container">
+          <div className="mission-intro">
+            <div className="kicker">What drives us</div>
+            <h2>Moving businesses forward with <span>purpose.</span></h2>
+          </div>
           <div className="mission-grid">
             <article className="mission-card">
               <div className="kicker">Our Mission</div>
-              <h2>Make logistics <span>simpler, smarter and more reliable.</span></h2>
-              <p>We connect stages of the supply chain through dependable execution, clear communication and technology-enabled solutions — helping businesses move goods with confidence.</p>
+              <h2>To make logistics simpler, more reliable, and more transparent.</h2>
+              <p>We connect every stage of the supply chain through dependable execution, clear communication, and technology-driven logistics solutions helping businesses move their goods with confidence.</p>
             </article>
             <article className="mission-card">
               <div className="kicker">Our Vision</div>
-              <h2>Build a logistics brand ready for the <span>global market.</span></h2>
-              <p>We aim to become a trusted logistics partner that combines strong Indian execution with global connectivity, visibility and consistent service.</p>
+              <h2>To be a trusted logistics partner that keeps businesses moving everywhere.</h2>
+              <p>We aim to build a connected, technology-enabled logistics network that delivers smarter solutions, stronger visibility, and consistent service across every journey.</p>
             </article>
           </div>
           <div className="about-values"><strong>Reliability</strong><i /><strong>Transparency</strong><i /><strong>Accountability</strong><i /><strong>Continuous improvement</strong></div>
@@ -76,7 +80,7 @@ export default function AboutPage() {
         .about-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.55fr);gap:80px;align-items:center}
         .about-hero .kicker,.mission-card .kicker{color:#ffb27d}
         .about-hero h1{margin:0;font-size:clamp(48px,6.8vw,80px);line-height:.94;letter-spacing:-.06em;font-weight:900}
-        .about-hero h1 span,.about-story h2 span,.capability-heading h2 span,.mission-card h2 span{color:var(--orange)}
+        .about-hero h1 span,.about-story h2 span,.capability-heading h2 span,.mission-intro h2 span{color:var(--orange)}
         .about-hero-copy p{max-width:690px;margin:26px 0 0;color:#d7e3f2;font-size:18px;line-height:1.7}
         .about-origin-card{justify-self:end;width:220px;padding:24px;border-left:2px solid var(--orange);background:rgba(255,255,255,.055);backdrop-filter:blur(10px)}
         .about-origin-card small{display:block;color:#ffb27d;font-size:10px;font-weight:900;letter-spacing:.16em}
@@ -95,16 +99,18 @@ export default function AboutPage() {
         .capability-grid b{color:var(--orange);font-size:12px;letter-spacing:.1em}
         .capability-grid h3{margin:42px 0 10px;color:var(--navy);font-size:22px;letter-spacing:-.025em}
         .capability-grid p{margin:0;color:#64748b;font-size:13px;line-height:1.65}
-        .mission-section{padding:0 0 90px;background:#f7f9fc}
+        .mission-section{padding:80px 0 90px;background:#f7f9fc;border-top:1px solid #e2e8f0}
+        .mission-intro{margin-bottom:34px}
+        .mission-intro h2{margin:0;color:var(--navy);font-size:clamp(36px,4.5vw,54px);line-height:1;letter-spacing:-.05em}
         .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
         .mission-card{padding:40px;border-radius:24px;background:#07152f;color:#fff;min-height:300px}
         .mission-card:nth-child(2){background:#0d2449}
-        .mission-card h2{margin:10px 0 16px;font-size:36px;line-height:1;letter-spacing:-.04em}
+        .mission-card h2{margin:10px 0 16px;font-size:32px;line-height:1.06;letter-spacing:-.035em;color:#fff}
         .mission-card p{max-width:560px;margin:0;color:#cbd8e8;font-size:15px;line-height:1.7}
         .about-values{margin-top:20px;padding:22px 28px;display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;border:1px solid #dfe7f0;border-radius:18px;color:var(--navy);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
         .about-values i{width:5px;height:5px;border-radius:50%;background:var(--orange)}
         @media(max-width:900px){.about-hero-inner,.about-story-grid,.capability-heading{grid-template-columns:1fr;gap:38px}.about-origin-card{justify-self:start}.capability-grid{grid-template-columns:1fr 1fr}.mission-grid{grid-template-columns:1fr}}
-        @media(max-width:640px){.about-hero{padding:70px 0;min-height:0}.about-hero h1{font-size:clamp(43px,13vw,62px)}.about-hero-copy p{font-size:15px}.about-story,.capability-section{padding:65px 0}.about-story h2,.capability-heading h2{font-size:40px}.capability-grid{grid-template-columns:1fr}.mission-card{padding:28px}.mission-card h2{font-size:31px}.about-values{flex-wrap:wrap;gap:12px;padding:18px}.about-values i{display:none}}
+        @media(max-width:640px){.about-hero{padding:70px 0;min-height:0}.about-hero h1{font-size:clamp(43px,13vw,62px)}.about-hero-copy p{font-size:15px}.about-story,.capability-section,.mission-section{padding:65px 0}.about-story h2,.capability-heading h2,.mission-intro h2{font-size:40px}.capability-grid{grid-template-columns:1fr}.mission-card{padding:28px}.mission-card h2{font-size:29px}.about-values{flex-wrap:wrap;gap:12px;padding:18px}.about-values i{display:none}}
       `}</style>
     </>
   );
