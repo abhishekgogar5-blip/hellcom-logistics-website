@@ -3,16 +3,38 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hellcomlogistics.com"),
   title: "HELLCOM Logistics | Move With Trust",
   description:
-    "HELLCOM Logistics provides reliable B2B transportation and logistics solutions with transparent communication and accountable service.",
+    "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    url: "https://hellcomlogistics.com/",
+    siteName: "HELLCOM Logistics",
+    title: "HELLCOM Logistics | Move With Trust",
+    description:
+      "Reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+  },
+  twitter: {
+    card: "summary",
+    title: "HELLCOM Logistics | Move With Trust",
+    description:
+      "Reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+  },
   icons: {
     icon: [
-      { url: "/favicon.svg?v=4", type: "image/svg+xml" },
-      { url: "/icon.svg?v=4", type: "image/svg+xml" },
+      { url: "/favicon.svg?v=5", type: "image/svg+xml" },
+      { url: "/icon.svg?v=5", type: "image/svg+xml" },
     ],
-    shortcut: "/favicon.svg?v=4",
-    apple: "/favicon.svg?v=4",
+    shortcut: "/favicon.svg?v=5",
+    apple: "/favicon.svg?v=5",
   },
 };
 
