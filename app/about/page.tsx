@@ -75,8 +75,8 @@ export default function AboutPage() {
 
       <style>{`
         .about-hero{position:relative;overflow:hidden;background:#06142f;color:#fff;padding:105px 0 100px;min-height:560px;display:flex;align-items:center}
-        .about-hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 82% 45%,rgba(255,106,0,.2),transparent 28%),linear-gradient(115deg,#06142f 0%,#0a1d3e 58%,#102c54 100%)}
-        .about-hero-bg:after{content:"";position:absolute;inset:0;opacity:.12;background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:70px 70px}
+        .about-hero-bg{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(6,20,47,.98) 0%,rgba(6,20,47,.92) 36%,rgba(6,20,47,.68) 58%,rgba(6,20,47,.28) 100%),url('/visuals/about-hero-logistics.svg');background-size:cover,cover;background-position:center,center right;background-repeat:no-repeat}
+        .about-hero-bg:after{content:"";position:absolute;inset:0;opacity:.1;background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:70px 70px}
         .about-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.55fr);gap:80px;align-items:center}
         .about-hero .kicker,.mission-card .kicker{color:#ffb27d}
         .about-hero h1{margin:0;font-size:clamp(48px,6.8vw,80px);line-height:.94;letter-spacing:-.06em;font-weight:900}
@@ -110,7 +110,7 @@ export default function AboutPage() {
         .about-values{margin-top:20px;padding:22px 28px;display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;border:1px solid #dfe7f0;border-radius:18px;color:var(--navy);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
         .about-values i{width:5px;height:5px;border-radius:50%;background:var(--orange)}
         @media(max-width:900px){.about-hero-inner,.about-story-grid,.capability-heading{grid-template-columns:1fr;gap:38px}.about-origin-card{justify-self:start}.capability-grid{grid-template-columns:1fr 1fr}.mission-grid{grid-template-columns:1fr}}
-        @media(max-width:640px){.about-hero{padding:70px 0;min-height:0}.about-hero h1{font-size:clamp(43px,13vw,62px)}.about-hero-copy p{font-size:15px}.about-story,.capability-section,.mission-section{padding:65px 0}.about-story h2,.capability-heading h2,.mission-intro h2{font-size:40px}.capability-grid{grid-template-columns:1fr}.mission-card{padding:28px}.mission-card h2{font-size:29px}.about-values{flex-wrap:wrap;gap:12px;padding:18px}.about-values i{display:none}}
+        @media(max-width:640px){.about-hero{padding:70px 0;min-height:0}.about-hero-bg{background-image:linear-gradient(90deg,rgba(6,20,47,.98) 0%,rgba(6,20,47,.9) 55%,rgba(6,20,47,.62) 100%),url('/visuals/about-hero-logistics.svg');background-position:center,72% center}.about-hero h1{font-size:clamp(43px,13vw,62px)}.about-hero-copy p{font-size:15px}.about-story,.capability-section,.mission-section{padding:65px 0}.about-story h2,.capability-heading h2,.mission-intro h2{font-size:40px}.capability-grid{grid-template-columns:1fr}.mission-card{padding:28px}.mission-card h2{font-size:29px}.about-values{flex-wrap:wrap;gap:12px;padding:18px}.about-values i{display:none}}
       `}</style>
     </>
   );
