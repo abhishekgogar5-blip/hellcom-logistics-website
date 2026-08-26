@@ -74,8 +74,8 @@ export default function IndustriesPage() {
         <div className="industries-hero-bg" aria-hidden="true">
           <img
             className="industries-hero-visual"
-            src="https://media.giphy.com/media/GJ7ZFaZgwDvGs31vRC/giphy.gif"
-            alt="Animated global logistics and shipping visual"
+            src="https://166global.com/storage/pages/page-image-1755591439.jpg"
+            alt="Modern industrial manufacturing facility"
           />
           <div className="industries-hero-visual-shade" />
         </div>
@@ -136,20 +136,20 @@ export default function IndustriesPage() {
       </section>
 
       <style>{`
-        .industries-hero{position:relative;overflow:hidden;background:#06142f;color:#fff;padding:82px 0 88px}
+        .industries-hero{position:relative;min-height:620px;overflow:hidden;background:#06142f;color:#fff;padding:82px 0 88px;display:flex;align-items:stretch}
         .industries-hero-bg{position:absolute;inset:0;background:#06142f;overflow:hidden}
-        .industries-hero-visual{position:absolute;top:0;right:0;width:57%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.96}
-        .industries-hero-visual-shade{position:absolute;inset:0;background:linear-gradient(90deg,#06142f 0%,rgba(6,20,47,.98) 25%,rgba(6,20,47,.72) 47%,rgba(6,20,47,.18) 72%,rgba(6,20,47,.04) 100%),linear-gradient(180deg,rgba(6,20,47,.12),rgba(6,20,47,.36))}
-        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.1;mask-image:linear-gradient(to right,transparent 0%,black 48%,black 100%)}
-        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.02),rgba(4,15,35,.24));pointer-events:none;z-index:0}
+        .industries-hero-visual{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.9;filter:saturate(.92) contrast(1.05)}
+        .industries-hero-visual-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,20,47,.97) 0%,rgba(6,20,47,.9) 24%,rgba(6,20,47,.62) 48%,rgba(6,20,47,.28) 72%,rgba(6,20,47,.4) 100%),linear-gradient(180deg,rgba(4,15,35,.2) 0%,rgba(4,15,35,.52) 100%)}
+        .industries-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;opacity:.1;mask-image:linear-gradient(to right,transparent 0%,black 35%,black 100%)}
+        .industries-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,35,.05),rgba(4,15,35,.3));pointer-events:none;z-index:0}
         .industries-hero-glow{position:absolute;width:520px;height:520px;right:-180px;bottom:-300px;border-radius:50%;background:rgba(255,106,0,.16);filter:blur(60px);z-index:1}
-        .industries-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
+        .industries-hero-inner{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:80px;align-items:end}
         .industries-hero .kicker{color:#ffb27d}
-        .industries-hero h1{max-width:920px;margin:0;font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.06em;font-weight:900}
+        .industries-hero h1{max-width:920px;margin:0;font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.06em;font-weight:900;text-shadow:0 3px 20px rgba(0,0,0,.2)}
         .industries-hero h1 span{color:var(--orange)}
-        .industries-hero-copy>p{max-width:730px;margin:27px 0 30px;color:#d9e4f4;font-size:17px;line-height:1.72}
+        .industries-hero-copy>p{max-width:730px;margin:27px 0 30px;color:#d9e4f4;font-size:17px;line-height:1.72;text-shadow:0 2px 12px rgba(0,0,0,.25)}
         .industries-hero .btn{display:inline-flex;gap:12px;align-items:center}
-        .industries-hero-panel{border-left:1px solid rgba(255,255,255,.22);padding:10px 0 10px 28px;display:grid;align-content:end;gap:5px;background:linear-gradient(90deg,rgba(6,20,47,.08),rgba(6,20,47,.25));backdrop-filter:blur(2px)}
+        .industries-hero-panel{border-left:1px solid rgba(255,255,255,.28);padding:10px 0 10px 28px;display:grid;align-content:end;gap:5px;background:linear-gradient(90deg,rgba(6,20,47,.08),rgba(6,20,47,.3));backdrop-filter:blur(3px)}
         .industries-hero-panel strong{font-size:clamp(38px,4.3vw,60px);line-height:.95;color:#fff;letter-spacing:-.045em;font-weight:900}
         .industries-hero-panel span{font-size:13px;color:#ffb27d;text-transform:uppercase;letter-spacing:.14em;font-weight:900}
         .industries-hero-panel small{max-width:180px;margin-top:10px;color:#c1cee0;font-size:13px;line-height:1.5}
@@ -179,8 +179,8 @@ export default function IndustriesPage() {
         .industries-cta .kicker{color:#ffb27d}
         .industries-cta h2{position:relative;z-index:1;margin:0;color:#fff;font-size:clamp(30px,4vw,48px);letter-spacing:-.045em}
         .industries-cta .btn{position:relative;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:12px}
-        @media(max-width:900px){.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}.industries-hero-visual{width:68%;opacity:.78}.industries-hero-visual-shade{background:linear-gradient(90deg,#06142f 0%,rgba(6,20,47,.98) 34%,rgba(6,20,47,.66) 66%,rgba(6,20,47,.22) 100%),linear-gradient(180deg,rgba(6,20,47,.12),rgba(6,20,47,.42))}}
-        @media(max-width:640px){.industries-hero{padding:60px 0 68px}.industries-hero-visual{width:100%;height:48%;top:auto;bottom:0;opacity:.4;object-position:center}.industries-hero-visual-shade{background:linear-gradient(180deg,#06142f 0%,rgba(6,20,47,.96) 42%,rgba(6,20,47,.62) 100%)}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
+        @media(max-width:900px){.industries-hero{min-height:680px}.industries-hero-inner,.industries-heading{grid-template-columns:1fr;gap:35px}.industries-hero-panel{border-left:0;border-top:1px solid rgba(255,255,255,.25);padding:24px 0 0}.industries-grid{grid-template-columns:1fr 1fr}.industry-card-featured{grid-column:span 2}.industries-hero-visual{object-position:center;opacity:.75}.industries-hero-visual-shade{background:linear-gradient(90deg,rgba(6,20,47,.98) 0%,rgba(6,20,47,.88) 40%,rgba(6,20,47,.42) 100%),linear-gradient(180deg,rgba(6,20,47,.18),rgba(6,20,47,.55))}}
+        @media(max-width:640px){.industries-hero{min-height:720px;padding:60px 0 68px}.industries-hero-visual{object-position:center;opacity:.48}.industries-hero-visual-shade{background:linear-gradient(180deg,rgba(6,20,47,.98) 0%,rgba(6,20,47,.92) 42%,rgba(6,20,47,.52) 100%)}.industries-hero h1{font-size:clamp(43px,13vw,64px)}.industries-hero-copy>p{font-size:15px}.industries-grid{grid-template-columns:1fr}.industry-card-featured{grid-column:auto}.industry-image-wrap,.industry-card-featured .industry-image-wrap{height:230px}.industry-content{padding:22px}.industry-content p{min-height:0}.industries-cta-inner{padding:34px 26px;align-items:flex-start;flex-direction:column}.industries-cta{padding-bottom:60px}}
       `}</style>
     </>
   );
