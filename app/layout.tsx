@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "HELLCOM Logistics | Move With Trust",
   description:
     "HELLCOM Logistics provides reliable B2B transportation and logistics solutions with transparent communication and accountable service.",
+  icons: {
+    icon: "/hellcom-logo.png",
+    shortcut: "/hellcom-logo.png",
+    apple: "/hellcom-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -14,13 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header">
           <div className="container nav-wrap">
-         <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
-  <img
-    src="/hellcom-logo.png"
-    alt="HELLCOM Logistics"
-    className="brand-logo"
-  />
-</Link>
+            <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
+              <img
+                src="/hellcom-logo.png"
+                alt="HELLCOM Logistics"
+                className="brand-logo"
+              />
+            </Link>
 
             <nav className="desktop-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
