@@ -7,9 +7,12 @@ export const metadata: Metadata = {
   description:
     "HELLCOM Logistics provides reliable B2B transportation and logistics solutions with transparent communication and accountable service.",
   icons: {
-    icon: "/icon.svg?v=3",
-    shortcut: "/icon.svg?v=3",
-    apple: "/icon.svg?v=3",
+    icon: [
+      { url: "/favicon.svg?v=4", type: "image/svg+xml" },
+      { url: "/icon.svg?v=4", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg?v=4",
+    apple: "/favicon.svg?v=4",
   },
 };
 
