@@ -11,16 +11,19 @@
 #card{position:relative;width:100%;max-width:1080px;margin:0 auto;aspect-ratio:16/10.4;background:#fff;border:1.5px solid var(--frame);overflow:hidden}
 #map-wrap{position:absolute;inset:5% 4% 11%;display:flex;align-items:center;justify-content:center;z-index:1;overflow:hidden}
 #map-wrap svg{width:100%;height:100%;display:block;overflow:visible}
-#map-wrap svg [cc]{fill:var(--grey-land)!important;stroke:#fff!important;stroke-width:.65px!important;transition:fill .2s ease}
+#map-wrap svg [cc]{fill:var(--grey-land)!important;stroke:#fff!important;stroke-width:.65px!important;transition:fill .2s ease,filter .2s ease;cursor:pointer}
 #map-wrap svg [cc].served{fill:var(--orange)!important}
-#map-wrap svg [cc]:hover{filter:brightness(.94)}
+#map-wrap svg [cc].served:hover,#map-wrap svg [cc].served:focus{filter:brightness(.94) drop-shadow(0 2px 2px rgba(23,38,58,.16));outline:none}
+#map-wrap svg [cc]:not(.served){cursor:default}
 #fallback-map{position:absolute;inset:5% 4% 11%;width:92%;height:84%;object-fit:contain;display:none;z-index:1}
 .stat{position:absolute;z-index:4;font-family:Poppins,sans-serif}.stat .num{font-weight:700;color:var(--orange);line-height:1;font-size:clamp(28px,3.6vw,46px);letter-spacing:-.01em}.stat .lbl{font-family:Inter,sans-serif;font-weight:500;color:var(--ink-soft);font-size:clamp(10.5px,1.15vw,13.5px);line-height:1.3;margin-top:2px}.stat.markets{top:4.2%;left:3%}
-.hq{position:absolute;z-index:5;left:65.2%;top:48%;width:42px;height:42px;border-radius:50%;background:var(--orange-dp);border:2px solid #fff;box-shadow:0 5px 14px rgba(23,38,58,.25);display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px Inter,sans-serif}
+.hq{position:absolute;z-index:5;left:65.2%;top:48%;width:42px;height:42px;border-radius:50%;background:var(--orange-dp);border:2px solid #fff;box-shadow:0 5px 14px rgba(23,38,58,.25);display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px Inter,sans-serif;cursor:pointer}
 .hq:after{content:"";position:absolute;top:39px;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--badge)}
+.country-tooltip{position:absolute;z-index:20;display:none;min-width:150px;max-width:220px;padding:10px 13px;border:1px solid rgba(255,106,0,.28);border-radius:12px;background:rgba(23,38,58,.97);box-shadow:0 12px 28px rgba(23,38,58,.25);color:#fff;pointer-events:none;white-space:nowrap}
+.country-tooltip.show{display:block}.country-tooltip .country-row{display:flex;align-items:center;gap:9px;font-family:Poppins,sans-serif;font-size:14px;font-weight:700;line-height:1.2}.country-tooltip .flag{font-size:20px;line-height:1}.country-tooltip .country-code{margin-top:4px;color:#ffb27d;font:600 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .wordmark{position:absolute;left:50%;bottom:4.6%;transform:translateX(-50%);z-index:4;text-align:center;white-space:nowrap}.wordmark .name{font-family:Poppins,sans-serif;font-weight:800;font-size:clamp(20px,3vw,34px);color:var(--ink);letter-spacing:-.01em}.wordmark .name b{color:var(--orange)}.wordmark .tag{margin-top:2px;font-family:Inter,sans-serif;font-size:clamp(10px,1.1vw,12.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}.wordmark .rule{width:46px;height:2.5px;background:var(--orange);margin:6px auto 0;border-radius:2px}
 #error{display:none;position:absolute;inset:35% 8%;z-index:8;text-align:center;color:var(--ink-soft);font-size:14px}
-@media(max-width:720px){#card{aspect-ratio:3/4;border-width:1px}#map-wrap{inset:13% 2% 17%}#fallback-map{inset:13% 2% 17%;width:96%;height:70%}.stat.markets{top:4%;left:4%}.hq{left:57%;top:50%;transform:scale(.85)}.wordmark{bottom:4%}}
+@media(max-width:720px){#card{aspect-ratio:3/4;border-width:1px}#map-wrap{inset:13% 2% 17%}#fallback-map{inset:13% 2% 17%;width:96%;height:70%}.stat.markets{top:4%;left:4%}.hq{left:57%;top:50%;transform:scale(.85)}.wordmark{bottom:4%}.country-tooltip{min-width:135px;padding:9px 11px}.country-tooltip .country-row{font-size:13px}}
 </style>
 </head>
 <body>
@@ -28,43 +31,27 @@
   <div id="map-wrap" aria-label="HELLCOM global reach map"></div>
   <img id="fallback-map" src="https://cdn.jsdelivr.net/gh/benhodgson/markedup-svg-worldmap@master/map.svg" alt="World map showing global reach" />
   <div class="stat markets"><div class="num">55+</div><div class="lbl">Countries /<br/>Markets</div></div>
-  <div class="hq" title="India Headquarters">HQ</div>
+  <div class="hq" title="India Headquarters" role="button" tabindex="0" aria-label="India Headquarters">HQ</div>
+  <div id="country-tooltip" class="country-tooltip" role="status" aria-live="polite"></div>
   <div class="wordmark"><div class="name"><b>HELLCOM</b> Global Reach</div><div class="rule"></div><div class="tag">Move With Trust</div></div>
   <div id="error">Global reach map is loading…</div>
 </div>
 <script>
 const SERVED=['ca','us','mx','br','gb','fr','de','es','it','ru','tr','ae','in','cn','jp','sg','au','nz','ph','kr','th','my','vn','id','hk','tw','om','kw','bd','lk','za','tz','ug','ao','cr','gr','cz','il','nl','se','be','ch','dk','fi','pt','si','sk','hu','at','cy','no','pl','ro','rs','bg','ie','hr'];
-const mapWrap=document.getElementById('map-wrap');
-const fallback=document.getElementById('fallback-map');
-const error=document.getElementById('error');
-const MAP_URLS=[
-  'https://cdn.jsdelivr.net/gh/benhodgson/markedup-svg-worldmap@master/map.svg',
-  'https://raw.githubusercontent.com/benhodgson/markedup-svg-worldmap/master/map.svg'
-];
-async function fetchMap(url){
-  const response=await fetch(url,{cache:'no-store',mode:'cors'});
-  if(!response.ok)throw new Error('Map request failed: '+response.status);
-  return response.text();
-}
-async function loadMap(){
-  for(const url of MAP_URLS){
-    try{
-      const svgText=await fetchMap(url);
-      mapWrap.innerHTML=svgText;
-      const svg=mapWrap.querySelector('svg');
-      if(!svg)throw new Error('SVG map missing');
-      svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('preserveAspectRatio','xMidYMid meet');
-      svg.querySelectorAll('[cc]').forEach(el=>{const code=(el.getAttribute('cc')||'').toLowerCase();if(SERVED.includes(code))el.classList.add('served')});
-      fallback.style.display='none';
-      error.style.display='none';
-      return;
-    }catch(err){console.warn('HELLCOM map source failed:',url,err)}
-  }
-  mapWrap.style.display='none';
-  fallback.style.display='block';
-  error.style.display='none';
-}
+const COUNTRIES={ca:['Canada','🇨🇦'],us:['United States','🇺🇸'],mx:['Mexico','🇲🇽'],br:['Brazil','🇧🇷'],gb:['United Kingdom','🇬🇧'],fr:['France','🇫🇷'],de:['Germany','🇩🇪'],es:['Spain','🇪🇸'],it:['Italy','🇮🇹'],ru:['Russia','🇷🇺'],tr:['Türkiye','🇹🇷'],ae:['United Arab Emirates','🇦🇪'],in:['India','🇮🇳'],cn:['China','🇨🇳'],jp:['Japan','🇯🇵'],sg:['Singapore','🇸🇬'],au:['Australia','🇦🇺'],nz:['New Zealand','🇳🇿'],ph:['Philippines','🇵🇭'],kr:['South Korea','🇰🇷'],th:['Thailand','🇹🇭'],my:['Malaysia','🇲🇾'],vn:['Vietnam','🇻🇳'],id:['Indonesia','🇮🇩'],hk:['Hong Kong','🇭🇰'],tw:['Taiwan','🇹🇼'],om:['Oman','🇴🇲'],kw:['Kuwait','🇰🇼'],bd:['Bangladesh','🇧🇩'],lk:['Sri Lanka','🇱🇰'],za:['South Africa','🇿🇦'],tz:['Tanzania','🇹🇿'],ug:['Uganda','🇺🇬'],ao:['Angola','🇦🇴'],cr:['Costa Rica','🇨🇷'],gr:['Greece','🇬🇷'],cz:['Czechia','🇨🇿'],il:['Israel','🇮🇱'],nl:['Netherlands','🇳🇱'],se:['Sweden','🇸🇪'],be:['Belgium','🇧🇪'],ch:['Switzerland','🇨🇭'],dk:['Denmark','🇩🇰'],fi:['Finland','🇫🇮'],pt:['Portugal','🇵🇹'],si:['Slovenia','🇸🇮'],sk:['Slovakia','🇸🇰'],hu:['Hungary','🇭🇺'],at:['Austria','🇦🇹'],cy:['Cyprus','🇨🇾'],no:['Norway','🇳🇴'],pl:['Poland','🇵🇱'],ro:['Romania','🇷🇴'],rs:['Serbia','🇷🇸'],bg:['Bulgaria','🇧🇬'],ie:['Ireland','🇮🇪'],hr:['Croatia','🇭🇷']};
+const mapWrap=document.getElementById('map-wrap'),fallback=document.getElementById('fallback-map'),error=document.getElementById('error'),tooltip=document.getElementById('country-tooltip'),card=document.getElementById('card'),hq=document.querySelector('.hq');
+let pinnedCode=null;
+const MAP_URLS=['https://cdn.jsdelivr.net/gh/benhodgson/markedup-svg-worldmap@master/map.svg','https://raw.githubusercontent.com/benhodgson/markedup-svg-worldmap/master/map.svg'];
+async function fetchMap(url){const response=await fetch(url,{cache:'no-store',mode:'cors'});if(!response.ok)throw new Error('Map request failed: '+response.status);return response.text()}
+function showCountry(code,element,pin=false){const data=COUNTRIES[code];if(!data)return;const [name,flag]=data;tooltip.innerHTML='<div class="country-row"><span class="flag">'+flag+'</span><span>'+name+'</span></div><div class="country-code">'+code.toUpperCase()+'</div>';const rect=element.getBoundingClientRect(),cardRect=card.getBoundingClientRect();tooltip.classList.add('show');const tipWidth=tooltip.offsetWidth,tipHeight=tooltip.offsetHeight;let left=rect.left-cardRect.left+(rect.width/2)-(tipWidth/2),top=rect.top-cardRect.top-tipHeight-10;if(top<8)top=rect.bottom-cardRect.top+10;left=Math.max(8,Math.min(left,cardRect.width-tipWidth-8));tooltip.style.left=left+'px';tooltip.style.top=top+'px';pinnedCode=pin?code:null}
+function hideCountry(force=false){if(!force&&pinnedCode)return;tooltip.classList.remove('show');if(force)pinnedCode=null}
+function wireCountries(svg){svg.querySelectorAll('[cc]').forEach(el=>{const code=(el.getAttribute('cc')||'').toLowerCase();if(!SERVED.includes(code)||!COUNTRIES[code])return;el.classList.add('served');el.setAttribute('tabindex','0');el.setAttribute('aria-label',COUNTRIES[code][0]);el.addEventListener('mouseenter',()=>{if(!pinnedCode)showCountry(code,el,false)});el.addEventListener('mouseleave',()=>{if(!pinnedCode)hideCountry()});el.addEventListener('focus',()=>showCountry(code,el,false));el.addEventListener('blur',()=>{if(!pinnedCode)hideCountry()});el.addEventListener('click',event=>{event.stopPropagation();if(pinnedCode===code)hideCountry(true);else showCountry(code,el,true)})})}
+async function loadMap(){for(const url of MAP_URLS){try{const svgText=await fetchMap(url);mapWrap.innerHTML=svgText;const svg=mapWrap.querySelector('svg');if(!svg)throw new Error('SVG map missing');svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('preserveAspectRatio','xMidYMid meet');wireCountries(svg);fallback.style.display='none';error.style.display='none';return}catch(err){console.warn('HELLCOM map source failed:',url,err)}}mapWrap.style.display='none';fallback.style.display='block';error.style.display='none'}
+hq.addEventListener('click',event=>{event.stopPropagation();if(pinnedCode==='in')hideCountry(true);else showCountry('in',hq,true)});
+hq.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();hq.click()}});
+card.addEventListener('click',event=>{if(event.target===card||!event.target.closest('[cc]'))hideCountry(true)});
 fallback.addEventListener('error',()=>{fallback.style.display='none';error.style.display='block'});
+window.addEventListener('resize',()=>{if(pinnedCode){const active=mapWrap.querySelector('[cc="'+pinnedCode+'"]')||hq;if(active)showCountry(pinnedCode,active,true)}});
 loadMap();
 </script>
 </body>
