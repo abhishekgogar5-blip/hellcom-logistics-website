@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     card: "summary",
     title: "HELLCOM Logistics | Move With Trust",
     description:
-      "Reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+      "Reliable B2B logistics and transportation solutions built around accountability.",
   },
   icons: {
     icon: [
-      { url: "/favicon.svg?v=7", type: "image/svg+xml", sizes: "any" },
-      { url: "/icon.svg?v=7", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon.svg?v=8", type: "image/svg+xml", sizes: "any" },
+      { url: "/icon.svg?v=8", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: "/favicon.svg?v=7",
-    apple: "/favicon.svg?v=7",
+    shortcut: "/favicon.svg?v=8",
+    apple: "/favicon.svg?v=8",
   },
 };
 
