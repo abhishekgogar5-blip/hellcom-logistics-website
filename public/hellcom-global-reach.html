@@ -9,38 +9,48 @@
 :root{--ink:#17263a;--ink-soft:#566477;--grey-land:#d8dce1;--grey-line:#fff;--orange:#ff6a00;--orange-dp:#d95700;--badge:#26384c;--frame:#1c2a3a}
 *{box-sizing:border-box}html,body{margin:0;padding:0;width:100%;height:100%;background:#fff;font-family:Inter,sans-serif;color:var(--ink)}
 #card{position:relative;width:100%;max-width:1080px;margin:0 auto;aspect-ratio:16/10.4;background:#fff;border:1.5px solid var(--frame);overflow:hidden}
-@media(max-width:720px){#card{aspect-ratio:3/4;border-width:1px}}
-#fallback-map{position:absolute;inset:7% 5% 13%;width:90%;height:80%;object-fit:contain;opacity:.18;filter:grayscale(1);display:block;z-index:0}
-svg#map{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}.land{fill:var(--grey-land);stroke:var(--grey-line);stroke-width:.7}.land.served{fill:var(--orange)}
-.badge circle{fill:var(--badge);stroke:#fff;stroke-width:1.6}.badge text{fill:#fff;font-family:Inter,sans-serif;font-weight:700;text-anchor:middle;dominant-baseline:middle}.badge.hub circle{fill:var(--orange-dp)}
-.stat{position:absolute;z-index:4;font-family:Poppins,sans-serif}.stat .num{font-weight:700;color:var(--orange);line-height:1;font-size:clamp(26px,3.6vw,46px);letter-spacing:-.01em}.stat .lbl{font-family:Inter,sans-serif;font-weight:500;color:var(--ink-soft);font-size:clamp(10.5px,1.15vw,13.5px);line-height:1.3;margin-top:2px}.stat.markets{top:4.2%;left:3%}
+#map-wrap{position:absolute;inset:5% 4% 11%;display:flex;align-items:center;justify-content:center;z-index:1;overflow:hidden}
+#map-wrap svg{width:100%;height:100%;display:block;overflow:visible}
+#map-wrap svg [cc]{fill:var(--grey-land)!important;stroke:#fff!important;stroke-width:.65px!important;transition:fill .2s ease}
+#map-wrap svg [cc].served{fill:var(--orange)!important}
+#map-wrap svg [cc]:hover{filter:brightness(.94)}
+.stat{position:absolute;z-index:4;font-family:Poppins,sans-serif}.stat .num{font-weight:700;color:var(--orange);line-height:1;font-size:clamp(28px,3.6vw,46px);letter-spacing:-.01em}.stat .lbl{font-family:Inter,sans-serif;font-weight:500;color:var(--ink-soft);font-size:clamp(10.5px,1.15vw,13.5px);line-height:1.3;margin-top:2px}.stat.markets{top:4.2%;left:3%}
+.hq{position:absolute;z-index:5;left:65.2%;top:48%;width:42px;height:42px;border-radius:50%;background:var(--orange-dp);border:2px solid #fff;box-shadow:0 5px 14px rgba(23,38,58,.25);display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px Inter,sans-serif}
+.hq:after{content:"";position:absolute;top:39px;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--badge)}
 .wordmark{position:absolute;left:50%;bottom:4.6%;transform:translateX(-50%);z-index:4;text-align:center;white-space:nowrap}.wordmark .name{font-family:Poppins,sans-serif;font-weight:800;font-size:clamp(20px,3vw,34px);color:var(--ink);letter-spacing:-.01em}.wordmark .name b{color:var(--orange)}.wordmark .tag{margin-top:2px;font-family:Inter,sans-serif;font-size:clamp(10px,1.1vw,12.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}.wordmark .rule{width:46px;height:2.5px;background:var(--orange);margin:6px auto 0;border-radius:2px}
-#tooltip{position:absolute;pointer-events:none;z-index:20;background:var(--ink);color:#fff;border-radius:6px;padding:7px 11px;font-family:Inter,sans-serif;font-size:12px;box-shadow:0 6px 18px rgba(28,42,58,.28);opacity:0;transform:translate(-50%,-130%);transition:opacity .12s ease;white-space:nowrap}#tooltip b{color:#ff9b5b}
+#error{display:none;position:absolute;inset:35% 8%;z-index:8;text-align:center;color:var(--ink-soft);font-size:14px}
+@media(max-width:720px){#card{aspect-ratio:3/4;border-width:1px}#map-wrap{inset:13% 2% 17%}.stat.markets{top:4%;left:4%}.hq{left:57%;top:50%;transform:scale(.85)}.wordmark{bottom:4%}}
 </style>
 </head>
 <body>
 <div id="card">
-<img id="fallback-map" src="https://raw.githubusercontent.com/okviz/synoptic-panel-maps/main/geo/world.svg" alt="World map showing global reach" />
-<svg id="map" aria-label="HELLCOM global reach map"></svg>
-<div class="stat markets"><div class="num">55+</div><div class="lbl">Countries /<br/>Markets</div></div>
-<div class="wordmark"><div class="name"><b>HELLCOM</b> Global Reach</div><div class="rule"></div><div class="tag">Move With Trust</div></div>
-<div id="tooltip"></div>
+  <div id="map-wrap" aria-label="HELLCOM global reach map"></div>
+  <div class="stat markets"><div class="num">55+</div><div class="lbl">Countries /<br/>Markets</div></div>
+  <div class="hq" title="India Headquarters">HQ</div>
+  <div class="wordmark"><div class="name"><b>HELLCOM</b> Global Reach</div><div class="rule"></div><div class="tag">Move With Trust</div></div>
+  <div id="error">Global reach map is loading…</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script>
-const COUNTRIES=[
-{code:'CHN',iso:'CN',name:'China'},{code:'USA',iso:'US',name:'United States'},{code:'ESP',iso:'ES',name:'Spain'},{code:'DEU',iso:'DE',name:'Germany'},{code:'PHL',iso:'PH',name:'Philippines'},{code:'JPN',iso:'JP',name:'Japan'},{code:'KOR',iso:'KR',name:'South Korea'},{code:'SGP',iso:'SG',name:'Singapore'},{code:'BRA',iso:'BR',name:'Brazil'},{code:'CAN',iso:'CA',name:'Canada'},{code:'GRC',iso:'GR',name:'Greece'},{code:'CZE',iso:'CZ',name:'Czech Republic'},{code:'ISR',iso:'IL',name:'Israel'},{code:'TUR',iso:'TR',name:'Turkey'},{code:'ITA',iso:'IT',name:'Italy'},{code:'NLD',iso:'NL',name:'Netherlands'},{code:'SWE',iso:'SE',name:'Sweden'},{code:'RUS',iso:'RU',name:'Russia'},{code:'BEL',iso:'BE',name:'Belgium'},{code:'CHE',iso:'CH',name:'Switzerland'},{code:'THA',iso:'TH',name:'Thailand'},{code:'AGO',iso:'AO',name:'Angola'},{code:'FRA',iso:'FR',name:'France'},{code:'HKG',iso:'HK',name:'Hong Kong'},{code:'MEX',iso:'MX',name:'Mexico'},{code:'TWN',iso:'TW',name:'Taiwan'},{code:'OMN',iso:'OM',name:'Oman'},{code:'AUS',iso:'AU',name:'Australia'},{code:'MYS',iso:'MY',name:'Malaysia'},{code:'DNK',iso:'DK',name:'Denmark'},{code:'GBR',iso:'GB',name:'United Kingdom'},{code:'VNM',iso:'VN',name:'Vietnam'},{code:'FIN',iso:'FI',name:'Finland'},{code:'PRT',iso:'PT',name:'Portugal'},{code:'ARE',iso:'AE',name:'UAE'},{code:'SVN',iso:'SI',name:'Slovenia'},{code:'SVK',iso:'SK',name:'Slovakia'},{code:'HUN',iso:'HU',name:'Hungary'},{code:'IDN',iso:'ID',name:'Indonesia'},{code:'KWT',iso:'KW',name:'Kuwait'},{code:'AUT',iso:'AT',name:'Austria'},{code:'CYP',iso:'CY',name:'Cyprus'},{code:'NOR',iso:'NO',name:'Norway'},{code:'POL',iso:'PL',name:'Poland'},{code:'ROU',iso:'RO',name:'Romania'},{code:'NZL',iso:'NZ',name:'New Zealand'},{code:'LKA',iso:'LK',name:'Sri Lanka'},{code:'SRB',iso:'RS',name:'Serbia'},{code:'BGR',iso:'BG',name:'Bulgaria'},{code:'BGD',iso:'BD',name:'Bangladesh'},{code:'CRI',iso:'CR',name:'Costa Rica'},{code:'TZA',iso:'TZ',name:'Tanzania'},{code:'IRL',iso:'IE',name:'Ireland'},{code:'HRV',iso:'HR',name:'Croatia'},{code:'UGA',iso:'UG',name:'Uganda'}
-];
-const byCode=new Map(COUNTRIES.map(d=>[d.code,d]));
-const BADGES=['CAN','USA','MEX','BRA','GBR','FRA','DEU','ESP','ITA','RUS','TUR','ARE','IND','CHN','JPN','SGP','AUS','ZAF','NZL'];
-const svg=d3.select('#map'),tooltip=d3.select('#tooltip'),card=document.getElementById('card'),fallback=document.getElementById('fallback-map');
-const projection=d3.geoNaturalEarth1(),path=d3.geoPath(projection),landGroup=svg.append('g'),badgeGroup=svg.append('g');let land;
-const NUDGE={CAN:[-10,-6],USA:[-6,4],MEX:[0,10],BRA:[0,0],GBR:[-14,-6],FRA:[-4,14],DEU:[10,2],ESP:[-8,18],ITA:[0,16],RUS:[10,-10],TUR:[6,10],ARE:[8,6],IND:[0,10],CHN:[6,-4],JPN:[6,-4],SGP:[6,10],AUS:[0,0],ZAF:[0,6],NZL:[0,6]};
-function resize(){const w=card.clientWidth,h=card.clientHeight;svg.attr('viewBox',`0 0 ${w} ${h}`);if(!land)return;projection.fitSize([w*.94,h*1.06],{type:'Sphere'});const c=projection.translate();projection.translate([c[0],c[1]+h*.02]);landGroup.selectAll('path').attr('d',path);drawBadges(w,h)}
-function featureFor(code){return land?.features.find(f=>String(f.id).toUpperCase()===code)}
-function drawBadges(w,h){badgeGroup.selectAll('*').remove();const r=Math.max(9,Math.min(w,h)*.018);BADGES.forEach(code=>{let xy;if(code==='IND'){xy=projection([78.9629,22.5937])}else{const f=featureFor(code);xy=f?path.centroid(f):null}if(!xy)return;const n=NUDGE[code]||[0,0],isHub=code==='IND',g=badgeGroup.append('g').attr('class','badge'+(isHub?' hub':'')).attr('transform',`translate(${xy[0]+n[0]},${xy[1]+n[1]})`);g.append('circle').attr('r',isHub?r*1.18:r);g.append('text').attr('font-size',r*(isHub?.72:.78)).text(code==='IND'?'HQ':(COUNTRIES.find(c=>c.code===code)?.iso||code.slice(0,2)));const info=COUNTRIES.find(c=>c.code===code);g.on('mousemove',ev=>{const rect=card.getBoundingClientRect();tooltip.style('opacity',1).style('left',(ev.clientX-rect.left)+'px').style('top',(ev.clientY-rect.top)+'px').html(`<b>${info?.name||'India Headquarters'}</b>`)}).on('mouseleave',()=>tooltip.style('opacity',0))})}
-async function init(){try{const world=await d3.json('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json');land=world;landGroup.selectAll('path').data(land.features).join('path').attr('class',d=>'land'+(byCode.has(String(d.id).toUpperCase())?' served':'')).on('mousemove',(ev,d)=>{const info=byCode.get(String(d.id).toUpperCase());if(!info)return;const rect=card.getBoundingClientRect();tooltip.style('opacity',1).style('left',(ev.clientX-rect.left)+'px').style('top',(ev.clientY-rect.top)+'px').html(`<b>${info.name}</b>`)}).on('mouseleave',()=>tooltip.style('opacity',0));resize();fallback.style.display='none'}catch(e){svg.style('display','none');fallback.style.display='block';console.error('Global reach map failed to load',e)}}
-window.addEventListener('resize',resize);init();
+const SERVED=['ca','us','mx','br','gb','fr','de','es','it','ru','tr','ae','in','cn','jp','sg','au','nz','ph','kr','th','my','vn','id','hk','tw','om','kw','bd','lk','za','tz','ug','ao','cr','gr','cz','il','nl','se','be','ch','dk','fi','pt','si','sk','hu','at','cy','no','pl','ro','rs','bg','ie','hr'];
+const mapWrap=document.getElementById('map-wrap');
+const error=document.getElementById('error');
+async function loadMap(){
+  try{
+    const response=await fetch('https://raw.githubusercontent.com/benhodgson/markedup-svg-worldmap/master/map.svg',{cache:'force-cache'});
+    if(!response.ok) throw new Error('Map request failed');
+    const svgText=await response.text();
+    mapWrap.innerHTML=svgText;
+    const svg=mapWrap.querySelector('svg');
+    if(!svg) throw new Error('SVG map missing');
+    svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+    svg.querySelectorAll('[cc]').forEach(el=>{const code=(el.getAttribute('cc')||'').toLowerCase();if(SERVED.includes(code))el.classList.add('served')});
+    error.style.display='none';
+  }catch(err){
+    error.style.display='block';
+    console.error('Global reach map failed to load',err);
+  }
+}
+loadMap();
 </script>
 </body>
 </html>
