@@ -7,13 +7,8 @@ export const metadata: Metadata = {
   title: "HELLCOM Logistics | Move With Trust",
   description:
     "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: "https://hellcomlogistics.com/",
@@ -38,20 +33,51 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "HELLCOM Logistics",
+  url: "https://hellcomlogistics.com/",
+  logo: "https://hellcomlogistics.com/hellcom-logo.png",
+  description:
+    "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+  slogan: "Move With Trust",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Shri Shyam Trans Logistics",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "HELLCOM Logistics",
+  alternateName: "HELLCOM",
+  url: "https://hellcomlogistics.com/",
+  publisher: {
+    "@type": "Organization",
+    name: "HELLCOM Logistics",
+  },
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+
         <header className="site-header">
           <div className="container nav-wrap">
             <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
-              <img
-                src="/hellcom-logo.png"
-                alt="HELLCOM Logistics"
-                className="brand-logo"
-              />
+              <img src="/hellcom-logo.png" alt="HELLCOM Logistics" className="brand-logo" />
             </Link>
-
             <nav className="desktop-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
               <Link href="/about">About</Link>
@@ -59,10 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/industries">Industries</Link>
               <Link href="/contact">Contact</Link>
             </nav>
-
-            <Link href="/quote" className="btn btn-primary nav-cta">
-              Get a Quote
-            </Link>
+            <Link href="/quote" className="btn btn-primary nav-cta">Get a Quote</Link>
           </div>
         </header>
 
@@ -73,9 +96,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div>
               <Link href="/" className="footer-brand">HELLCOM<span> LOGISTICS</span></Link>
               <p className="footer-tagline">Move With Trust.</p>
-              <p className="muted">
-                Reliable B2B logistics and transportation solutions built around accountability.
-              </p>
+              <p className="muted">Reliable B2B logistics and transportation solutions built around accountability.</p>
             </div>
             <div>
               <h4>Company</h4>
