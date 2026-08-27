@@ -64,10 +64,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-256.png", sizes: "256x256", type: "image/png" },
       { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: "/favicon.svg",
+    shortcut: "/favicon-32.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/site.webmanifest",
 };
 
 const organizationSchema = {
