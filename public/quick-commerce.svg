@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Quick commerce delivery</title>
+  <desc id="desc">Three colourful quick-commerce delivery bags representing rapid grocery delivery services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111827"/><stop offset="1" stop-color="#334155"/></linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#4c1d95"/></linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#facc15"/><stop offset="1" stop-color="#eab308"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ef4444"/><stop offset="1" stop-color="#b91c1c"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="180" fill="#0ea5e9" opacity=".12"/>
+  <circle cx="170" cy="580" r="230" fill="#f97316" opacity=".08"/>
+  <g opacity=".22" fill="#cbd5e1">
+    <rect x="70" y="390" width="110" height="150"/><rect x="195" y="330" width="125" height="210"/><rect x="340" y="410" width="100" height="130"/>
+    <rect x="780" y="360" width="120" height="180"/><rect x="920" y="300" width="150" height="240"/><rect x="1090" y="390" width="75" height="150"/>
+  </g>
+  <g filter="url(#shadow)">
+    <g transform="translate(130 155) rotate(-4)">
+      <path d="M45 80 Q45 20 105 20 H285 Q345 20 345 80 V365 Q345 405 305 405 H85 Q45 405 45 365Z" fill="url(#purple)"/>
+      <path d="M112 22 Q112 -35 195 -35 Q278 -35 278 22" fill="none" stroke="#a78bfa" stroke-width="20" stroke-linecap="round"/>
+      <text x="195" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="64" font-weight="800" fill="#fff">zepto</text>
+      <text x="195" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#ede9fe">10 MIN DELIVERY</text>
+    </g>
+    <g transform="translate(430 190) rotate(2)">
+      <path d="M45 80 Q45 20 105 20 H285 Q345 20 345 80 V365 Q345 405 305 405 H85 Q45 405 45 365Z" fill="url(#yellow)"/>
+      <path d="M112 22 Q112 -35 195 -35 Q278 -35 278 22" fill="none" stroke="#fde68a" stroke-width="20" stroke-linecap="round"/>
+      <text x="195" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#111827">blinkit</text>
+      <text x="195" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#422006">FAST GROCERY</text>
+    </g>
+    <g transform="translate(730 165) rotate(-3)">
+      <path d="M45 80 Q45 20 105 20 H285 Q345 20 345 80 V365 Q345 405 305 405 H85 Q45 405 45 365Z" fill="url(#red)"/>
+      <path d="M112 22 Q112 -35 195 -35 Q278 -35 278 22" fill="none" stroke="#fca5a5" stroke-width="20" stroke-linecap="round"/>
+      <circle cx="92" cy="190" r="27" fill="#fff" opacity=".9"/><path d="M80 190 h24 M92 178 v24" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
+      <text x="215" y="205" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="800" fill="#fff">instamart</text>
+      <text x="195" y="250" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fee2e2">QUICK DELIVERY</text>
+    </g>
+  </g>
+  <path d="M80 585 H1120" stroke="#f97316" stroke-width="4" opacity=".65"/>
+  <text x="600" y="640" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="800" letter-spacing="5" fill="#f8fafc">QUICK COMMERCE LOGISTICS</text>
+</svg>
