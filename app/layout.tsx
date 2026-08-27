@@ -24,9 +24,7 @@ export const metadata: Metadata = {
       "Reliable B2B logistics and transportation solutions built around accountability.",
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg?v=10", type: "image/svg+xml", sizes: "any" },
-    ],
+    icon: [{ url: "/favicon.svg?v=10", type: "image/svg+xml", sizes: "any" }],
     shortcut: "/favicon.svg?v=10",
     apple: "/favicon.svg?v=10",
   },
@@ -41,10 +39,7 @@ const organizationSchema = {
   description:
     "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
   slogan: "Move With Trust",
-  parentOrganization: {
-    "@type": "Organization",
-    name: "Shri Shyam Trans Logistics",
-  },
+  parentOrganization: { "@type": "Organization", name: "Shri Shyam Trans Logistics" },
 };
 
 const websiteSchema = {
@@ -53,24 +48,15 @@ const websiteSchema = {
   name: "HELLCOM Logistics",
   alternateName: "HELLCOM",
   url: "https://hellcomlogistics.com/",
-  publisher: {
-    "@type": "Organization",
-    name: "HELLCOM Logistics",
-  },
+  publisher: { "@type": "Organization", name: "HELLCOM Logistics" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
 
         <header className="site-header">
           <div className="container nav-wrap">
@@ -91,13 +77,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main>{children}</main>
 
         <style>{`
-          /* Reliability fixes for media that previously depended on a remote image. */
           .industry-card:nth-child(10) .industry-image-wrap {
             background: #0b1733 url('/quick-commerce.svg?v=2') center / cover no-repeat;
           }
-          .industry-card:nth-child(10) .industry-image-wrap > img {
-            display: none;
-          }
+          .industry-card:nth-child(10) .industry-image-wrap > img { display: none; }
         `}</style>
 
         <footer className="footer">
@@ -117,7 +100,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <h4>Contact</h4>
               <a href="mailto:info@hellcomlogistics.com">info@hellcomlogistics.com</a>
               <Link href="/quote">Request a Quote</Link>
-              <a href="https://wa.me/" target="_blank" rel="noreferrer">WhatsApp</a>
+              <Link href="/contact">Contact Team</Link>
             </div>
           </div>
           <div className="container footer-bottom">
