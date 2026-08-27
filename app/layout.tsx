@@ -25,11 +25,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg?v=8", type: "image/svg+xml", sizes: "any" },
-      { url: "/icon.svg?v=8", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon.svg?v=10", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: "/favicon.svg?v=8",
-    apple: "/favicon.svg?v=8",
+    shortcut: "/favicon.svg?v=10",
+    apple: "/favicon.svg?v=10",
   },
 };
 
@@ -90,6 +89,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </header>
 
         <main>{children}</main>
+
+        <style>{`
+          /* Reliability fixes for media that previously depended on a remote image. */
+          .industry-card:nth-child(10) .industry-image-wrap {
+            background: #0b1733 url('/quick-commerce.svg?v=2') center / cover no-repeat;
+          }
+          .industry-card:nth-child(10) .industry-image-wrap > img {
+            display: none;
+          }
+        `}</style>
 
         <footer className="footer">
           <div className="container footer-grid">
