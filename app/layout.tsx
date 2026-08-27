@@ -4,29 +4,69 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hellcomlogistics.com"),
-  title: "HELLCOM Logistics | Move With Trust",
+  title: {
+    default: "HELLCOM Logistics | Freight Forwarding & Transportation",
+    template: "%s | HELLCOM Logistics",
+  },
   description:
-    "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+    "HELLCOM Logistics provides freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of experience.",
+  applicationName: "HELLCOM Logistics",
+  keywords: [
+    "HELLCOM Logistics",
+    "freight forwarding India",
+    "logistics company India",
+    "transportation services India",
+    "air freight",
+    "ocean freight",
+    "rail freight",
+    "inland transportation",
+    "customs clearance",
+    "3PL warehousing",
+  ],
+  authors: [{ name: "HELLCOM Logistics" }],
+  creator: "HELLCOM Logistics",
+  publisher: "HELLCOM Logistics",
+  category: "Logistics and Transportation",
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: "https://hellcomlogistics.com/",
     siteName: "HELLCOM Logistics",
-    title: "HELLCOM Logistics | Move With Trust",
+    title: "HELLCOM Logistics | Freight Forwarding & Transportation",
     description:
-      "Reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+      "Freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of transportation experience.",
+    images: [
+      {
+        url: "/hellcom-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "HELLCOM Logistics",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "HELLCOM Logistics | Move With Trust",
+    card: "summary_large_image",
+    title: "HELLCOM Logistics | Freight Forwarding & Transportation",
     description:
-      "Reliable B2B logistics and transportation solutions built around accountability.",
+      "Freight forwarding, transportation, customs clearance, warehousing and 3PL logistics solutions across India.",
+    images: ["/hellcom-logo.png"],
   },
   icons: {
-    icon: [{ url: "/favicon.svg?v=10", type: "image/svg+xml", sizes: "any" }],
-    shortcut: "/favicon.svg?v=10",
-    apple: "/favicon.svg?v=10",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+    shortcut: "/favicon.svg",
   },
 };
 
@@ -37,7 +77,7 @@ const organizationSchema = {
   url: "https://hellcomlogistics.com/",
   logo: "https://hellcomlogistics.com/hellcom-logo.png",
   description:
-    "HELLCOM Logistics provides reliable B2B transportation and end-to-end logistics solutions across India, backed by 27 years of transportation experience.",
+    "HELLCOM Logistics provides freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of experience.",
   slogan: "Move With Trust",
   parentOrganization: { "@type": "Organization", name: "Shri Shyam Trans Logistics" },
 };
