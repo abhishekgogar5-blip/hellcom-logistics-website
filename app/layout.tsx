@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 
+const faviconPath = "/visuals/faviconnn.png";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://hellcomlogistics.com"),
   title: {
@@ -21,25 +23,41 @@ export const metadata: Metadata = {
   publisher: "HELLCOM Logistics",
   category: "Logistics and Transportation",
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    type: "website", url: "https://hellcomlogistics.com/", siteName: "HELLCOM Logistics",
+    type: "website",
+    url: "https://hellcomlogistics.com/",
+    siteName: "HELLCOM Logistics",
     title: "HELLCOM Logistics | Freight Forwarding & Transportation",
-    description: "Freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of transportation experience.",
+    description:
+      "Freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of transportation experience.",
     images: [{ url: "/hellcom-logo.png", width: 1200, height: 630, alt: "HELLCOM Logistics" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "HELLCOM Logistics | Freight Forwarding & Transportation",
-    description: "Freight forwarding, transportation, customs clearance, warehousing and 3PL logistics solutions across India.",
+    description:
+      "Freight forwarding, transportation, customs clearance, warehousing and 3PL logistics solutions across India.",
     images: ["/hellcom-logo.png"],
   },
   icons: {
+    // Keep the exact HELLCOM brand symbol supplied in public/visuals.
     icon: [
-      { url: "/visuals/faviconnn.png", sizes: "any", type: "image/png" },
+      { url: faviconPath, sizes: "any", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/visuals/faviconnn.png",
-    apple: [{ url: "/visuals/faviconnn.png", sizes: "180x180", type: "image/png" }],
+    shortcut: faviconPath,
+    apple: [{ url: faviconPath, sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
 };
