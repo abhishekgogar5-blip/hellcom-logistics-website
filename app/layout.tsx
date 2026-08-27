@@ -12,90 +12,47 @@ export const metadata: Metadata = {
     "HELLCOM Logistics provides freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of experience.",
   applicationName: "HELLCOM Logistics",
   keywords: [
-    "HELLCOM Logistics",
-    "freight forwarding India",
-    "logistics company India",
-    "transportation services India",
-    "air freight",
-    "ocean freight",
-    "rail freight",
-    "inland transportation",
-    "customs clearance",
-    "3PL warehousing",
+    "HELLCOM Logistics", "freight forwarding India", "logistics company India",
+    "transportation services India", "air freight", "ocean freight", "rail freight",
+    "inland transportation", "customs clearance", "3PL warehousing",
   ],
   authors: [{ name: "HELLCOM Logistics" }],
   creator: "HELLCOM Logistics",
   publisher: "HELLCOM Logistics",
   category: "Logistics and Transportation",
   alternates: { canonical: "/" },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   openGraph: {
-    type: "website",
-    url: "https://hellcomlogistics.com/",
-    siteName: "HELLCOM Logistics",
+    type: "website", url: "https://hellcomlogistics.com/", siteName: "HELLCOM Logistics",
     title: "HELLCOM Logistics | Freight Forwarding & Transportation",
-    description:
-      "Freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of transportation experience.",
-    images: [
-      {
-        url: "/hellcom-logo.png",
-        width: 1200,
-        height: 630,
-        alt: "HELLCOM Logistics",
-      },
-    ],
+    description: "Freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of transportation experience.",
+    images: [{ url: "/hellcom-logo.png", width: 1200, height: 630, alt: "HELLCOM Logistics" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "HELLCOM Logistics | Freight Forwarding & Transportation",
-    description:
-      "Freight forwarding, transportation, customs clearance, warehousing and 3PL logistics solutions across India.",
+    description: "Freight forwarding, transportation, customs clearance, warehousing and 3PL logistics solutions across India.",
     images: ["/hellcom-logo.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-256.png", sizes: "256x256", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/visuals/faviconnn.png", sizes: "any", type: "image/png" },
     ],
-    shortcut: "/favicon-32.png",
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    shortcut: "/visuals/faviconnn.png",
+    apple: [{ url: "/visuals/faviconnn.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
 };
 
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "HELLCOM Logistics",
-  url: "https://hellcomlogistics.com/",
-  logo: "https://hellcomlogistics.com/hellcom-logo.png",
-  description:
-    "HELLCOM Logistics provides freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of experience.",
-  slogan: "Move With Trust",
-  parentOrganization: { "@type": "Organization", name: "Shri Shyam Trans Logistics" },
+  "@context": "https://schema.org", "@type": "Organization", name: "HELLCOM Logistics",
+  url: "https://hellcomlogistics.com/", logo: "https://hellcomlogistics.com/hellcom-logo.png",
+  description: "HELLCOM Logistics provides freight forwarding, transportation, customs clearance, warehousing and 3PL solutions across India, backed by 27 years of experience.",
+  slogan: "Move With Trust", parentOrganization: { "@type": "Organization", name: "Shri Shyam Trans Logistics" },
 };
-
 const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "HELLCOM Logistics",
-  alternateName: "HELLCOM",
-  url: "https://hellcomlogistics.com/",
-  publisher: { "@type": "Organization", name: "HELLCOM Logistics" },
+  "@context": "https://schema.org", "@type": "WebSite", name: "HELLCOM Logistics",
+  alternateName: "HELLCOM", url: "https://hellcomlogistics.com/", publisher: { "@type": "Organization", name: "HELLCOM Logistics" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -104,56 +61,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-
         <header className="site-header">
           <div className="container nav-wrap">
-            <Link href="/" className="brand" aria-label="HELLCOM Logistics home">
-              <img src="/hellcom-logo.png" alt="HELLCOM Logistics" className="brand-logo" />
-            </Link>
+            <Link href="/" className="brand" aria-label="HELLCOM Logistics home"><img src="/hellcom-logo.png" alt="HELLCOM Logistics" className="brand-logo" /></Link>
             <nav className="desktop-nav" aria-label="Main navigation">
-              <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
-              <Link href="/services">Services</Link>
-              <Link href="/industries">Industries</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/">Home</Link><Link href="/about">About</Link><Link href="/services">Services</Link><Link href="/industries">Industries</Link><Link href="/contact">Contact</Link>
             </nav>
             <Link href="/quote" className="btn btn-primary nav-cta">Get a Quote</Link>
           </div>
         </header>
-
         <main>{children}</main>
-
-        <style>{`
-          .industry-card:nth-child(10) .industry-image-wrap {
-            background: #0b1733 url('/quick-commerce.svg?v=2') center / cover no-repeat;
-          }
-          .industry-card:nth-child(10) .industry-image-wrap > img { display: none; }
-        `}</style>
-
+        <style>{`.industry-card:nth-child(10) .industry-image-wrap{background:#0b1733 url('/quick-commerce.svg?v=2') center/cover no-repeat}.industry-card:nth-child(10) .industry-image-wrap>img{display:none}`}</style>
         <footer className="footer">
           <div className="container footer-grid">
-            <div>
-              <Link href="/" className="footer-brand">HELLCOM<span> LOGISTICS</span></Link>
-              <p className="footer-tagline">Move With Trust.</p>
-              <p className="muted">Reliable B2B logistics and transportation solutions built around accountability.</p>
-            </div>
-            <div>
-              <h4>Company</h4>
-              <Link href="/about">About Us</Link>
-              <Link href="/services">Services</Link>
-              <Link href="/industries">Industries</Link>
-            </div>
-            <div>
-              <h4>Contact</h4>
-              <a href="mailto:info@hellcomlogistics.com">info@hellcomlogistics.com</a>
-              <Link href="/quote">Request a Quote</Link>
-              <Link href="/contact">Contact Team</Link>
-            </div>
+            <div><Link href="/" className="footer-brand">HELLCOM<span> LOGISTICS</span></Link><p className="footer-tagline">Move With Trust.</p><p className="muted">Reliable B2B logistics and transportation solutions built around accountability.</p></div>
+            <div><h4>Company</h4><Link href="/about">About Us</Link><Link href="/services">Services</Link><Link href="/industries">Industries</Link></div>
+            <div><h4>Contact</h4><a href="mailto:info@hellcomlogistics.com">info@hellcomlogistics.com</a><Link href="/quote">Request a Quote</Link><Link href="/contact">Contact Team</Link></div>
           </div>
-          <div className="container footer-bottom">
-            <span>© 2026 HELLCOM Logistics. All rights reserved.</span>
-            <span>Move With Trust.</span>
-          </div>
+          <div className="container footer-bottom"><span>© 2026 HELLCOM Logistics. All rights reserved.</span><span>Move With Trust.</span></div>
         </footer>
       </body>
     </html>
