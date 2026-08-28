@@ -1,11 +1,39 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 export default function QuotePage() {
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    alert("Thanks — your quote request has been captured for this demo. Connect this form to your email/CRM before launch.");
+    setStatus("sending");
+    setMessage("");
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Unable to send request.");
+      }
+
+      form.reset();
+      setStatus("success");
+      setMessage("Thank you. Your quote request has been sent to HELLCOM Logistics. Our team will get back to you shortly.");
+    } catch (error) {
+      setStatus("error");
+      setMessage(error instanceof Error ? error.message : "We could not send your request. Please try again.");
+    }
   }
 
   return (
@@ -14,7 +42,7 @@ export default function QuotePage() {
         <div className="container">
           <div className="kicker">Get a Quote</div>
           <h1>Tell us what needs moving.</h1>
-          <p>Share the basics below. This first version is a front-end form ready to be connected to email or your CRM.</p>
+          <p>Share the basics below and our logistics team will review your requirement.</p>
         </div>
       </section>
 
@@ -67,10 +95,33 @@ export default function QuotePage() {
                   <label htmlFor="details">Additional Details</label>
                   <textarea id="details" name="details" placeholder="Approx. weight, shipment frequency, preferred date, special handling, etc." />
                 </div>
+
+                <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                  <label htmlFor="website">Website</label>
+                  <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
               </div>
+
               <div className="form-actions">
-                <button className="btn btn-primary" type="submit">Request Quote</button>
+                <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending..." : "Request Quote"}
+                </button>
               </div>
+
+              {message && (
+                <div
+                  role="status"
+                  style={{
+                    marginTop: 18,
+                    padding: "12px 14px",
+                    borderRadius: 10,
+                    background: status === "success" ? "#ecfdf3" : "#fff1f0",
+                    color: status === "success" ? "#146c43" : "#b42318",
+                  }}
+                >
+                  {message}
+                </div>
+              )}
             </form>
           </div>
         </div>
