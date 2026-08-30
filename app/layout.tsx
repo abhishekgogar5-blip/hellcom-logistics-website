@@ -51,7 +51,6 @@ export const metadata: Metadata = {
     images: ["/hellcom-logo.png"],
   },
   icons: {
-    // Keep the exact HELLCOM brand symbol supplied in public/visuals.
     icon: [
       { url: faviconPath, sizes: "any", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
@@ -83,7 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="container nav-wrap">
             <Link href="/" className="brand" aria-label="HELLCOM Logistics home"><img src="/hellcom-logo.png" alt="HELLCOM Logistics" className="brand-logo" /></Link>
             <nav className="desktop-nav" aria-label="Main navigation">
-              <Link href="/">Home</Link><Link href="/about">About</Link><Link href="/services">Services</Link><Link href="/industries">Industries</Link><Link href="/contact">Contact</Link>
+              <Link href="/">Home</Link><Link href="/about">About</Link><Link href="/services">Services</Link><Link href="/industries">Industries</Link><Link href="/track">Track Shipment</Link><Link href="/contact">Contact</Link>
             </nav>
             <Link href="/quote" className="btn btn-primary nav-cta">Get a Quote</Link>
           </div>
