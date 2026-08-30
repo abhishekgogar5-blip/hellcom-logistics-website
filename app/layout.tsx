@@ -92,9 +92,35 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <style>{`.industry-card:nth-child(10) .industry-image-wrap{background:#0b1733 url('/quick-commerce.svg?v=2') center/cover no-repeat}.industry-card:nth-child(10) .industry-image-wrap>img{display:none}`}</style>
         <footer className="footer">
           <div className="container footer-grid">
-            <div><Link href="/" className="footer-brand">HELLCOM<span> LOGISTICS</span></Link><p className="footer-tagline">Move With Trust.</p><p className="muted">Reliable B2B logistics and transportation solutions built around accountability.</p></div>
-            <div><h4>Company</h4><Link href="/about">About Us</Link><Link href="/services">Services</Link><Link href="/industries">Industries</Link></div>
-            <div><h4>Contact</h4><a href="mailto:info@hellcomlogistics.com">info@hellcomlogistics.com</a><Link href="/quote">Request a Quote</Link><Link href="/contact">Contact Team</Link></div>
+            <div>
+              <Link href="/" className="footer-brand">HELLCOM<span> LOGISTICS</span></Link>
+              <p className="footer-tagline">Move With Trust.</p>
+              <p className="muted">Reliable B2B logistics and transportation solutions built around accountability.</p>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <Link href="/about">About Us</Link>
+              <Link href="/services">Services</Link>
+              <Link href="/industries">Industries</Link>
+            </div>
+            <div>
+              <h4>Contact</h4>
+              <a href="mailto:info@hellcomlogistics.com">info@hellcomlogistics.com</a>
+              <a href="https://wa.me/917666972483" target="_blank" rel="noopener noreferrer">WhatsApp: +91 76669 72483</a>
+              <Link href="/quote">Request a Quote</Link>
+              <Link href="/contact">Contact Team</Link>
+            </div>
+            <div>
+              <h4>Address</h4>
+              <address className="footer-address">
+                216, Shree Mahavir Plaza<br />
+                Opposite Gajanan Petrol Pump<br />
+                Mankoli Naka, Dapoda<br />
+                Bhiwandi, Thane (West)<br />
+                Maharashtra – 421302<br />
+                India
+              </address>
+            </div>
           </div>
           <div className="container footer-bottom"><span>© 2026 HELLCOM Logistics. All rights reserved.</span><span>Move With Trust.</span></div>
         </footer>
