@@ -11,33 +11,43 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Honeypot field: real users never fill this.
-    if (clean(body.website)) {
-      return NextResponse.json({ ok: true });
-    }
+    if (clean(body.website)) return NextResponse.json({ ok: true });
 
     const name = clean(body.name);
     const company = clean(body.company);
     const phone = clean(body.phone);
     const email = clean(body.email);
+    const service = clean(body.service);
+    const tos = clean(body.tos);
+    const originPort = clean(body.originPort);
+    const originCityPin = clean(body.originCityPin);
+    const destinationPort = clean(body.destinationPort);
+    const destinationCityPin = clean(body.destinationCityPin);
     const pickup = clean(body.pickup);
     const delivery = clean(body.delivery);
+    const weight = clean(body.weight);
+    const dimensions = clean(body.dimensions);
     const material = clean(body.material);
     const vehicle = clean(body.vehicle);
     const details = clean(body.details);
 
-    if (!name || !phone || !pickup || !delivery) {
-      return NextResponse.json(
-        { ok: false, message: "Please complete all required fields." },
-        { status: 400 }
-      );
+    if (!name || !phone || !service) {
+      return NextResponse.json({ ok: false, message: "Please complete all required fields." }, { status: 400 });
+    }
+
+    const freightServices = ["Air", "FCL", "LCL"];
+    if (freightServices.includes(service)) {
+      if (!tos || !originPort || !originCityPin || !destinationPort || !destinationCityPin || !weight || !dimensions || !material) {
+        return NextResponse.json({ ok: false, message: "Please complete all required shipment details." }, { status: 400 });
+      }
+    }
+
+    if (service === "Transportation" && (!pickup || !delivery || !vehicle)) {
+      return NextResponse.json({ ok: false, message: "Please complete the required transportation details." }, { status: 400 });
     }
 
     if (email && !/^\S+@\S+\.\S+$/.test(email)) {
-      return NextResponse.json(
-        { ok: false, message: "Please enter a valid email address." },
-        { status: 400 }
-      );
+      return NextResponse.json({ ok: false, message: "Please enter a valid email address." }, { status: 400 });
     }
 
     const smtpUser = process.env.SMTP_USER;
@@ -46,54 +56,84 @@ export async function POST(request: Request) {
 
     if (!smtpUser || !smtpPass) {
       console.error("Missing SMTP_USER or SMTP_PASS environment variables.");
-      return NextResponse.json(
-        { ok: false, message: "Email service is not configured yet." },
-        { status: 500 }
-      );
+      return NextResponse.json({ ok: false, message: "Email service is not configured yet." }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465,
       secure: true,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
+      auth: { user: smtpUser, pass: smtpPass },
     });
 
-    const subject = `New Quote Request — ${name}${company ? ` | ${company}` : ""}`;
+    const subject = `New Quote Request — ${service} — ${name}${company ? ` | ${company}` : ""}`;
 
-    const text = [
+    const fields = [
       "HELLCOM LOGISTICS — NEW WEBSITE QUOTE REQUEST",
       "",
+      "CONTACT INFORMATION",
       `Name: ${name}`,
       `Company: ${company || "Not provided"}`,
       `Phone: ${phone}`,
       `Email: ${email || "Not provided"}`,
-      `Pickup: ${pickup}`,
-      `Delivery: ${delivery}`,
-      `Material: ${material || "Not provided"}`,
-      `Vehicle: ${vehicle || "Not provided"}`,
+      "",
+      `SERVICE: ${service}`,
+      ...(service === "Transportation"
+        ? [
+            `Pickup Location: ${pickup}`,
+            `Delivery Location: ${delivery}`,
+            `Material Type: ${material || "Not provided"}`,
+            `Vehicle Requirement: ${vehicle}`,
+          ]
+        : [
+            `TOS: ${tos}`,
+            `Port of Loading: ${originPort}`,
+            `Loading City / PIN: ${originCityPin}`,
+            `Port of Destination: ${destinationPort}`,
+            `Destination City / PIN: ${destinationCityPin}`,
+            `Weight: ${weight}`,
+            `Dimensions: ${dimensions}`,
+            `Material Type: ${material}`,
+          ]),
       "",
       "Additional Details:",
       details || "Not provided",
-    ].join("\n");
+    ];
+
+    const text = fields.join("\n");
+
+    const rows = [
+      ["Name", name],
+      ["Company", company || "Not provided"],
+      ["Phone", phone],
+      ["Email", email || "Not provided"],
+      ["Service", service],
+      ...(service === "Transportation"
+        ? [
+            ["Pickup Location", pickup],
+            ["Delivery Location", delivery],
+            ["Material Type", material || "Not provided"],
+            ["Vehicle Requirement", vehicle],
+          ]
+        : [
+            ["TOS", tos],
+            ["Port of Loading", originPort],
+            ["Loading City / PIN", originCityPin],
+            ["Port of Destination", destinationPort],
+            ["Destination City / PIN", destinationCityPin],
+            ["Weight", weight],
+            ["Dimensions", dimensions],
+            ["Material Type", material],
+          ]),
+      ["Additional Details", details || "Not provided"],
+    ];
 
     const html = `
       <div style="font-family:Arial,sans-serif;line-height:1.6;color:#172b4d">
         <h2 style="color:#ff6b00;margin-bottom:4px">New Website Quote Request</h2>
-        <p style="margin-top:0">HELLCOM LOGISTICS</p>
+        <p style="margin-top:0">HELLCOM LOGISTICS · ${escapeHtml(service)}</p>
         <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:700px">
-          <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
-          <tr><td><strong>Company</strong></td><td>${escapeHtml(company || "Not provided")}</td></tr>
-          <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
-          <tr><td><strong>Email</strong></td><td>${escapeHtml(email || "Not provided")}</td></tr>
-          <tr><td><strong>Pickup</strong></td><td>${escapeHtml(pickup)}</td></tr>
-          <tr><td><strong>Delivery</strong></td><td>${escapeHtml(delivery)}</td></tr>
-          <tr><td><strong>Material</strong></td><td>${escapeHtml(material || "Not provided")}</td></tr>
-          <tr><td><strong>Vehicle</strong></td><td>${escapeHtml(vehicle || "Not provided")}</td></tr>
-          <tr><td><strong>Additional Details</strong></td><td>${escapeHtml(details || "Not provided").replace(/\n/g, "<br>")}</td></tr>
+          ${rows.map(([label, value]) => `<tr><td style="vertical-align:top"><strong>${escapeHtml(label)}</strong></td><td>${escapeHtml(value).replace(/\n/g, "<br>")}</td></tr>`).join("")}
         </table>
       </div>
     `;
@@ -110,10 +150,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Quote form email error:", error);
-    return NextResponse.json(
-      { ok: false, message: "We could not send your request. Please try again." },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, message: "We could not send your request. Please try again." }, { status: 500 });
   }
 }
 
