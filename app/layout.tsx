@@ -89,7 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </header>
         <main>{children}</main>
-        <style>{`.industry-card:nth-child(10) .industry-image-wrap{background:#0b1733 url('/quick-commerce.svg?v=2') center/cover no-repeat}.industry-card:nth-child(10) .industry-image-wrap>img{display:none}`}</style>
+        <style>{`.industry-card:nth-child(10) .industry-image-wrap{background:#0b1733 url('/quick-commerce.svg?v=2') center/cover no-repeat}.industry-card:nth-child(10) .industry-image-wrap>img{display:none}.footer-grid{grid-template-columns:1.45fr .7fr .95fr 1.25fr}.footer-address{font-style:normal;color:#9fb0c8;line-height:1.65}.footer-grid a:hover{color:#fff}@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}@media(max-width:640px){.footer-grid{grid-template-columns:1fr}}`}</style>
         <footer className="footer">
           <div className="container footer-grid">
             <div>
