@@ -73,10 +73,9 @@ export default function TrackShipmentPage() {
 
             {submitted && (
               <div className="track-integration-note" role="status">
-                <strong>Tracking interface is ready.</strong>
+                <strong>No records found</strong>
                 <span>
-                  Live shipment data will appear here once the HELLCOM tracking
-                  backend/API is connected.
+                  We couldn&apos;t find a shipment matching the {trackingType} entered.
                 </span>
               </div>
             )}
